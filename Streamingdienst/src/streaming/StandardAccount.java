@@ -17,17 +17,17 @@ public class StandardAccount extends Account {
 
 
 	@Override
-			public void playSong(int playlistChoice, int son) {
+			public void playSong(Song song) {
 			
 			int i = (int) (Math.random()* 6);
 			System.out.println(adMenu[i]);
 			//Laut ChatGPT zwingt dich Java zur abfangen der Fehler bei Thread.sleep
 			try {
-			    Thread.sleep(30000); // 30 Sekunden Pause 
+			    Thread.sleep(7000); // 7 Sekunden Pause 
 			} catch (InterruptedException e) {
 			    System.out.println("Pause wurde Illegal übersprungen");
 			}
-			super.playSong(playlistChoice, son);
+			super.playSong(song);
 		}
 	
 

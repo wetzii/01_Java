@@ -48,11 +48,8 @@ public class Account {
 		   		}
 	   }  
    }
-   	public void playSong(int playlistChoice, int song) {
-   		System.out.println("Song wird gespielt...");
-   		if (playlists[playlistChoice] != null) {
-   			playlists[playlistChoice].getSongAt(song).toString();
-   		}
+   	public void playSong(Song song) {
+   		System.out.println(song.toString());
    		
    	}
 }

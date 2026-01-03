@@ -2,9 +2,6 @@ package streaming;
 
 import java.util.Scanner;
 
-
-
-
 public class Player {
 	
 	public static void main(String[] args) {
@@ -73,12 +70,13 @@ public class Player {
 		acc.printPlaylists();
 		int playlistSelect = scan.nextInt();
 		Playlist target = acc.getPlaylitAt(playlistSelect);
+		System.out.println(target.getName());
 		
 		System.out.println("Playlist vortlaufend hören (1) | Song mit zufälliger Wiedergabe hören (2) | einzelnen Song aus Playlist spielen (3): ");
 		int playChoice = scan.nextInt();
 		switch(playChoice) {
 			case 1:
-				target.playPlaylistStrict();
+				target.playPlaylistStrict(acc);
 				break;
 			case 2: 
 				target.playPlaylistRand(acc);
@@ -87,8 +85,7 @@ public class Player {
 				System.out.println("Diese Songs befinden sich in der Playlist: ");
 				target.printPosblSongs();
 				int songChoice = scan.nextInt();
-				acc.playSong(playlistSelect, songChoice);
-				
+		
 				}
 			}
 		}

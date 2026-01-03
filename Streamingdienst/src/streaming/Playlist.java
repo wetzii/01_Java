@@ -30,14 +30,16 @@ public class Playlist {
 		currentPosition++; 
 	}
 	//Playlist wird in Zufälliger Reihenfole gespielt
-	public void playPlaylistStrict() {
+	public void playPlaylistStrict(Account acc)  {
 	
-		for (int i = 0; i < currentPosition; i++) {
+		for (int i = 0; i < currentPosition;  i++) {
 			if (playlist[i] != null) {
-			playlist[i].toString();
+				acc.playSong(playlist[i]);
+				
+				}
 			}
-		}
 	}
+		
 	public void playPlaylistRand(Account acc) {
 		boolean[] played = new boolean[currentPosition];
 		int playedCount = 0;
@@ -46,11 +48,9 @@ public class Playlist {
 		int randPos = (int) (Math.random() * currentPosition);     //Einfach dazu da Um die Random Stelle zu erzeugen
 
 		 if (!played[randPos] && playlist[randPos] != null) { //Abfrage ob bei Played der Boolean frei ist und der Platz der Playlist eh nicht leer ist
-		System.out.println(playlist[randPos]);
+			 acc.playSong(playlist[randPos]);
 		played[randPos] = true;			//Wenn der SOng gespielt wurde bekommt er an die Position die er in der Playlist hat den Status True
 		playedCount++;
-			
-		 
 		   }
 		}
 	}
