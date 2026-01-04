@@ -22,6 +22,7 @@ public class Player {
 	}
 	public static String askName(Scanner scan) {
 		System.out.println("Gib deinen Namen ein: ");
+		scan.nextLine();
 		String name = scan.nextLine();
 		return name;
 	}
@@ -49,6 +50,31 @@ public class Player {
 		createNewPlaylist(acc, scan);	
 		break;
 	case 2:
+		insertSong(scan, acc);
+		break;
+	case 3: 
+		listenSong(scan, acc);
+		break;
+			}
+		}
+	}
+	public static void createNewPlaylist(Account acc, Scanner scan) {
+			int lenPlaylist = 0;
+		//Maybe noch If einfügen die Chekct ob noch Platz ist
+			System.out.printf("Du hast noch %d freie Playlist Plätze\n", acc.getMaxPlaylists() - acc.getPlaylistCount());
+			System.out.println("Name der Playlist: ");
+			String playlistName = scan.nextLine();
+			
+			
+			do {
+					
+				System.out.println("Wie lange sollte deine Playlist sein: ");
+				lenPlaylist = scan.nextInt();
+				
+				} while (lenPlaylist < 0);
+				acc.addPlaylist(new Playlist(playlistName, lenPlaylist), playlistName);
+	}
+	public static void insertSong(Scanner scan, Account acc) {
 		System.out.println("Gib den Song namen ein: ");
 		String songName = scan.nextLine();
 		System.out.println("Gib den Interpret ein: ");
@@ -58,14 +84,15 @@ public class Player {
 		System.out.println("In welche Playlist möchtest du den Song speichern: ");
 		acc.printPlaylists();
 		int playlistChoice = scan.nextInt();
+		
+		if(playlistChoice >= acc.getMaxPlaylists() && playlistChoice >= 0);
 		scan.nextLine();
 		//Also du mmusst die Array Postion Nutzen  und dann auf addSong einfügen kiene Ahnung ob es die schon gibt
 		//song Objekt sollte normalerweise in den Array direkt 
 		//Normalerweise geht Debugen kann nicht debuggen
 		acc.getPlaylitAt(playlistChoice).insertSong(new Song(songName, artistName,genreName ));
-		break;
-		//Case 3 wird dazu da sein den Song zu spielen
-	case 3: 
+	}
+	public static void listenSong(Scanner scan, Account acc) {
 		System.out.println("In Welcher Playlist möchtest du nach dem Song suchen: ");
 		acc.printPlaylists();
 		int playlistSelect = scan.nextInt();
@@ -85,28 +112,11 @@ public class Player {
 				System.out.println("Diese Songs befinden sich in der Playlist: ");
 				target.printPosblSongs();
 				int songChoice = scan.nextInt();
+				break;
 		
 				}
 			}
-		}
-	}
-	public static void createNewPlaylist(Account acc, Scanner scan) {
-			int lenPlaylist = 0;
-		//Maybe noch If einfügen die Chekct ob noch Platz ist
-			System.out.printf("Du hast noch %d freie Playlist Plätze\n", acc.getMaxPlaylists() - acc.getPlaylistCount());
-			System.out.println("Name der Playlist: ");
-			String playlistName = scan.nextLine();
-			
-			
-			do {
-					
-				System.out.println("Wie lange sollte deine Playlist sein: ");
-				lenPlaylist = scan.nextInt();
-				
-				} while (lenPlaylist < 0);
-				acc.addPlaylist(new Playlist(playlistName, lenPlaylist), playlistName);
-				
-				
-	}
+		
+	
 }
 
