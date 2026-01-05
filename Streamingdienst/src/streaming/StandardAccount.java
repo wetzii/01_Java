@@ -20,6 +20,7 @@ public class StandardAccount extends Account {
 			public void playSong(Song song) {
 			
 			int i = (int) (Math.random()* 6);
+			System.out.println("WERBEPAUSE 7S");
 			System.out.println(adMenu[i]);
 			//Laut ChatGPT zwingt dich Java zur abfangen der Fehler bei Thread.sleep
 			try {

@@ -35,13 +35,13 @@ public class Player {
 			 acc = new StandardAccount(askName(scan));
 		}
 		while(true) {
-			
-		System.out.println("Was möchtest du machen");
+		System.out.println("-----------------------------------------------------");
+		System.out.printf("%s was möchtest du machen?\n", acc.getUsername());
 		System.out.println("Deine Möglichkeiten: ");
 		System.out.println("Playlist erstellen --> (1)");
 		System.out.println("Song in Playlist einfügen --> (2)");
 		System.out.println("Song aus Playlist abspielen --> (3)");
-		
+		System.out.println("EINGABE----------------------------------------------");
 		int choice = scan.nextInt();
 		scan.nextLine();
 		switch(choice) {
@@ -50,12 +50,22 @@ public class Player {
 		createNewPlaylist(acc, scan);	
 		break;
 	case 2:
+		if(acc.getPlaylistCount() != 0) {
 		insertSong(scan, acc);
+		}else {
+			System.out.println("-----------------------------------------------------");
+			System.out.println("Du hast noch keine Playlist erstellt!");
+		}
 		break;
 	case 3: 
-		listenSong(scan, acc);
-		break;
+		if(acc.getPlaylistCount() != 0) {
+			listenSong(scan, acc);
+			}else {
+				System.out.println("-----------------------------------------------------");
+				System.out.println("Du hast noch keine Playlist erstellt!");
 			}
+		break;
+			} 
 		}
 	}
 	public static void createNewPlaylist(Account acc, Scanner scan) {
@@ -84,14 +94,19 @@ public class Player {
 		System.out.println("In welche Playlist möchtest du den Song speichern: ");
 		acc.printPlaylists();
 		int playlistChoice = scan.nextInt();
+		scan.nextLine();
 		
 		if(playlistChoice >= acc.getMaxPlaylists() && playlistChoice >= 0);
-		scan.nextLine();
 		//Also du mmusst die Array Postion Nutzen  und dann auf addSong einfügen kiene Ahnung ob es die schon gibt
 		//song Objekt sollte normalerweise in den Array direkt 
 		//Normalerweise geht Debugen kann nicht debuggen
-		acc.getPlaylitAt(playlistChoice).insertSong(new Song(songName, artistName,genreName ));
+		if(acc.getPlaylitAt(playlistChoice).getCurrenPos() < acc.getPlaylitAt(playlistChoice).getPlaylistLen()) {
+			acc.getPlaylitAt(playlistChoice).insertSong(new Song(songName, artistName,genreName ));
+		}else {
+			System.out.println("Deine Playlist ist Schon voll!!!!");
+		}
 	}
+	
 	public static void listenSong(Scanner scan, Account acc) {
 		System.out.println("In Welcher Playlist möchtest du nach dem Song suchen: ");
 		acc.printPlaylists();
@@ -111,7 +126,10 @@ public class Player {
 			case 3 :
 				System.out.println("Diese Songs befinden sich in der Playlist: ");
 				target.printPosblSongs();
+				scan.nextLine();
 				int songChoice = scan.nextInt();
+				System.out.println(songChoice);
+				target.playSoloSong(acc, songChoice);
 				break;
 		
 				}

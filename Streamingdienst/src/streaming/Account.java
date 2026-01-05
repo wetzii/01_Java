@@ -22,6 +22,7 @@ public class Account {
    public Playlist getPlaylitAt(int i) {
 	   return playlists[i];
    }
+   
    public int getPlaylistCount() {
 	   return playlistCount;
    }
@@ -36,6 +37,7 @@ public class Account {
            playlistCount++;
            System.out.println("Playlist '" + playlist.getName() + "' wurde hinzugefügt.");
        } else {
+    	   	   System.out.println("-----------------------------------------------------");
            System.out.println("Maximale Anzahl an Playlists erreicht!");
        
        }
@@ -45,7 +47,7 @@ public class Account {
 	   for (int i = 0; i < playlists.length; i++) {
 		   if(playlists[i] != null) {
 			   System.out.printf("%d. Playlist : %s\n", i, playlists[i].getName());
-		   		}
+		   		} 
 	   }  
    }
    	public void playSong(Song song) {

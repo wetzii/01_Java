@@ -24,6 +24,12 @@ public class Playlist {
 		//Überprüfung im Player eibauen einbauen
 		return playlist[index];
 	}
+	public int getCurrenPos() {
+		return currentPosition;
+	}
+	public int getPlaylistLen() {
+		return playlist.length;
+	}
 	//SETTER
 	public void insertSong(Song song) {
 		playlist[currentPosition] = song;
@@ -54,17 +60,14 @@ public class Playlist {
 		   }
 		}
 	}
+	public void playSoloSong(Account acc, int i) {
+		acc.playSong(getSongAt(i));
+	}
 	public void printPosblSongs() {
 		for(int i = 0; i < currentPosition; i++) {
 			if (playlist[i] != null) {
-			System.out.printf("(1) --> %s von %s \n", playlist[i].getTitle(), playlist[i].getArtist());
+			System.out.printf("(i) --> %s von %s \n", playlist[i].getTitle(), playlist[i].getArtist());
 			}
-		}
-	}
-	public void playSong (int songPosition) {
-		if(playlist[songPosition] != null) {
-			
-			playlist[songPosition].toString();
 		}
 	}
 }
