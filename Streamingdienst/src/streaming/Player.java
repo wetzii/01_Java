@@ -49,7 +49,7 @@ public class Player {
 		if(acc.getPremiumFetures()) { // Aktion nur anzeigen wenn Premium
 			System.out.println("Premium Funktionen --> (5)");
 		}
-		System.out.println("EXIT --> (0)");
+		System.out.println("BYTE BEAT SCHLIEßEN --> (0)");
 		System.out.println("EINGABE----------------------------------------------");
 		int choice = scan.nextInt();
 		scan.nextLine();
