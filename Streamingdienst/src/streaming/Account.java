@@ -16,7 +16,7 @@ public class Account {
     	playlistCount = 0;
     	this.maxPlaylists = maxPlaylists;  
     	playQual = "Normal";
-    
+    //GETTER
     }
     public String getUsername() {
     	return username;
@@ -43,13 +43,16 @@ public class Account {
    public boolean getPremiumFetures() {
 	   return premiumFetures;
    }
+   //Setter
    public void setPlayQual(String playQual) {
 	   this.playQual = playQual;
    }
+ 
    public void setPremiumFetures(boolean premiumFetures) {
 	   this.premiumFetures = premiumFetures;
    }
-   public void addPlaylist(Playlist playlist, String name) {
+   //Playlist hinzüfügen bzw erstellen
+   public void addPlaylist(Playlist playlist) {
 	   if (playlistCount < maxPlaylists) {
     	   //An freier Array STelle die Playlist einfügen
            playlists[playlistCount] = playlist;
@@ -62,23 +65,25 @@ public class Account {
        
        }
    }
+   //Alle Playlists werden ausgegeben
    public void printPlaylists() {
 	   System.out.println("Deine Playlists: ");
 	   for (int i = 0; i < playlists.length; i++) {
 		   if(playlists[i] != null) {
 			   System.out.printf("(%d). Playlist : %s\n", i +1, playlists[i].getName());
-			   System.out.println("EINGABE----------------------------------------------");
+			   
 		   		} 
 	   }  
    }
    	public void playSong(Song song) {
+   		//Song wird gespielt 
    		songCount++;
    		System.out.println("-----------------------------------------------------");
    		System.out.println("Song spielt......");
    		System.out.println(song.toString());
    	//Laut ChatGPT zwingt dich Java zur abfangen der Fehler bei Thread.sleep
 		try {
-		    Thread.sleep(3); // 3 Sekunden Pause 
+		    Thread.sleep(3000); // 3 Sekunden Pause 
 		} catch (InterruptedException e) {
 		    System.out.println("Fehler");
 		}

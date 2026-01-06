@@ -30,7 +30,7 @@ public class Playlist {
 	public int getPlaylistLen() {
 		return playlist.length;
 	}
-	//SETTER
+	
 	public void insertSong(Song song) {
 		playlist[currentPosition] = song;
 		currentPosition++; 
@@ -45,7 +45,7 @@ public class Playlist {
 				}
 			}
 	}
-		
+	//Songs aus einer Playlist zufällig abspielen und jeder Song darf nur einmal abgespielt werden
 	public void playPlaylistRand(Account acc) {
 		boolean[] played = new boolean[currentPosition];
 		int playedCount = 0;
@@ -63,6 +63,7 @@ public class Playlist {
 	public void playSoloSong(Account acc, int i) {
 		acc.playSong(getSongAt(i));
 	}
+	
 	public void printPosblSongs() {
 		for(int i = 0; i < currentPosition; i++) {
 			if (playlist[i] != null) {

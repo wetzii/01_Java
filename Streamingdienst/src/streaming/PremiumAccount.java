@@ -27,7 +27,7 @@ public class PremiumAccount extends Account {
 	}
 	
 	
-	public void playFavSong() {
+	public void playFavSong() { // Lieblingssong wird gespielt wenn er festgelegt wurde
 		if (favSong != null) {
 			playSong(favSong);
 		}else {
