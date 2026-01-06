@@ -66,8 +66,10 @@ public class Playlist {
 	public void printPosblSongs() {
 		for(int i = 0; i < currentPosition; i++) {
 			if (playlist[i] != null) {
-			System.out.printf("(i) --> %s von %s \n", playlist[i].getTitle(), playlist[i].getArtist());
+			System.out.printf("(%d) --> %s von %s \n",i+1, playlist[i].getTitle(), playlist[i].getArtist());
 			}
 		}
 	}
+
+	
 }

@@ -5,12 +5,17 @@ public class Account {
     private Playlist[] playlists;
     private int playlistCount;
     private int maxPlaylists;
+    private int songCount;
+    private String playQual;
+    private boolean premiumFetures;
     
     public Account(String username, int maxPlaylists) {
-        this.playlists = new Playlist[maxPlaylists]; 
+    this.playlists = new Playlist[maxPlaylists]; 
     	this.username = username;
+    	songCount = 0;
     	playlistCount = 0;
     	this.maxPlaylists = maxPlaylists;  
+    	playQual = "Normal";
     
     }
     public String getUsername() {
@@ -29,6 +34,21 @@ public class Account {
    public int getMaxPlaylists(){
 	   return maxPlaylists;
    }
+   public int getSongCount() {
+	   return songCount;
+   }
+   public String getplayQual() {
+	   return playQual;
+   }
+   public boolean getPremiumFetures() {
+	   return premiumFetures;
+   }
+   public void setPlayQual(String playQual) {
+	   this.playQual = playQual;
+   }
+   public void setPremiumFetures(boolean premiumFetures) {
+	   this.premiumFetures = premiumFetures;
+   }
    public void addPlaylist(Playlist playlist, String name) {
 	   if (playlistCount < maxPlaylists) {
     	   //An freier Array STelle die Playlist einfügen
@@ -46,11 +66,13 @@ public class Account {
 	   System.out.println("Deine Playlists: ");
 	   for (int i = 0; i < playlists.length; i++) {
 		   if(playlists[i] != null) {
-			   System.out.printf("%d. Playlist : %s\n", i, playlists[i].getName());
+			   System.out.printf("(%d). Playlist : %s\n", i +1, playlists[i].getName());
+			   System.out.println("EINGABE----------------------------------------------");
 		   		} 
 	   }  
    }
    	public void playSong(Song song) {
+   		songCount++;
    		System.out.println("-----------------------------------------------------");
    		System.out.println("Song spielt......");
    		System.out.println(song.toString());
@@ -58,9 +80,7 @@ public class Account {
 		try {
 		    Thread.sleep(3); // 3 Sekunden Pause 
 		} catch (InterruptedException e) {
-		    System.out.println("Pause wurde Illegal übersprungen");
+		    System.out.println("Fehler");
 		}
-   		
-   		
    	}
 }
