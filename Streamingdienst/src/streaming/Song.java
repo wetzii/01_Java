@@ -26,7 +26,6 @@ public class Song {
 	//to String
 	@Override
 	public String toString() {
-		System.out.println("Song wird gespielt...--------------------------------");
 		return "Songname: " + title + "\nInterpret: " + artist + "\nGenre: " + genre ;
 	}
 }

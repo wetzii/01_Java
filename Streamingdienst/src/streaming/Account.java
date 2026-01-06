@@ -51,7 +51,16 @@ public class Account {
 	   }  
    }
    	public void playSong(Song song) {
+   		System.out.println("-----------------------------------------------------");
+   		System.out.println("Song spielt......");
    		System.out.println(song.toString());
+   	//Laut ChatGPT zwingt dich Java zur abfangen der Fehler bei Thread.sleep
+		try {
+		    Thread.sleep(3); // 3 Sekunden Pause 
+		} catch (InterruptedException e) {
+		    System.out.println("Pause wurde Illegal übersprungen");
+		}
+   		
    		
    	}
 }
