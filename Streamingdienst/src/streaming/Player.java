@@ -146,25 +146,27 @@ public class Player {
 		int playlistSelect = scan.nextInt() - 1; //-1 Weil  bei Einem Array 0 die 1. Stelle ist
 		Playlist target = acc.getPlaylitAt(playlistSelect);
 		System.out.println(target.getName());
-		
-		System.out.println("Playlist vortlaufend hören (1) | Song mit zufälliger Wiedergabe hören (2) | einzelnen Song aus Playlist spielen (3): ");
-		int playChoice = scan.nextInt();
-		switch(playChoice) {
-			case 1:
-				target.playPlaylistStrict(acc);
-				break;
-			case 2: 
-				target.playPlaylistRand(acc);
-				break;
-			case 3 :
-				System.out.println("Diese Songs befinden sich in der Playlist: ");
-				target.printPosblSongs();
-				scan.nextLine();
-				int songChoice = scan.nextInt() -1;
-				System.out.println(songChoice);
-				target.playSoloSong(acc, songChoice);
-				break;
-		
+		if(target.getSongAt(0) != null) { //Überprüfen ob überhaupt Songs in der Playlist sind 
+			System.out.println("Playlist vortlaufend hören (1) | Song mit zufälliger Wiedergabe hören (2) | einzelnen Song aus Playlist spielen (3): ");
+			int playChoice = scan.nextInt();
+			switch(playChoice) {
+				case 1:
+					target.playPlaylistStrict(acc);
+					break;
+				case 2: 
+					target.playPlaylistRand(acc);
+					break;
+				case 3 :
+					System.out.println("Diese Songs befinden sich in der Playlist: ");
+					target.printPosblSongs();
+					scan.nextLine();
+					int songChoice = scan.nextInt() -1;
+					System.out.println(songChoice);
+					target.playSoloSong(acc, songChoice);
+					break;
+					}
+				}else {
+					System.out.println("Playlist ist leer");
 				}
 			}
 	public static void infoAcc(Account acc) {
@@ -299,7 +301,7 @@ public class Player {
 	
 	}
 	public static void goodbye() {
-		  System.out.println("  _____  ____________  ___  _______ ______");
+		    System.out.println("  _____  ____________  ___  _______ ______");
 		    System.out.println(" / _ ) \\/ /_  __/ __/ / _ )/ __/ _ /_  __/");
 		    System.out.println("/ _  |\\  / / / / _/  / _  / _// __ |/ /   ");
 		    System.out.println("/____/ /_/ /_/ /___/ /____/___/_/ |_/_/    ");
