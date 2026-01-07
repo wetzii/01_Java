@@ -1,5 +1,6 @@
 package employee;
 
+
 public abstract  class Employee {
 
 		private String name;
@@ -15,6 +16,15 @@ public abstract  class Employee {
 		public void changeName(String newName) {
 			if(newName != null) {
 				name = newName;
+			}else {
+				System.out.println("UNGÜLTIGE EINGABE!!!");
 			}
 		}
+		public abstract void calculateMonthlySalary();
+			
+	
+		 @Override
+		 public  String toString() {
+			 return "Name: " + name + "\nMitarbeiter ID: " + employeeID;
+		 }
 }
