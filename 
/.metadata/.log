@@ -1,0 +1,74 @@
+!SESSION 2026-01-07 11:06:36.377 -----------------------------------------------
+eclipse.buildId=4.38.0.20251204-0849
+java.version=21.0.9
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=de_AT
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY ch.qos.logback.classic 1 0 2026-01-07 11:06:39.588
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2026-01-07 11:06:44.718
+!MESSAGE Logback config file: /home/wetzi/git/01_Java/
+/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.7.101.20251017-1242.xml
+
+!ENTRY org.eclipse.oomph.setup.ui 2 0 2026-01-07 11:07:02.772
+!MESSAGE Attempt to access stopped agent: org.eclipse.equinox.internal.p2.core.ProvisioningAgent@d24776f
+!STACK 0
+java.lang.IllegalStateException: Attempt to access stopped agent: org.eclipse.equinox.internal.p2.core.ProvisioningAgent@d24776f
+	at org.eclipse.equinox.internal.p2.core.ProvisioningAgent.checkRunning(ProvisioningAgent.java:93)
+	at org.eclipse.equinox.internal.p2.core.ProvisioningAgent.getService(ProvisioningAgent.java:53)
+	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.ignoreExistingProfile(SimpleProfileRegistry.java:336)
+	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.internalGetProfile(SimpleProfileRegistry.java:287)
+	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.getProfile(SimpleProfileRegistry.java:204)
+	at org.eclipse.oomph.p2.internal.core.ProfileImpl.getProfileSafe(ProfileImpl.java:296)
+	at org.eclipse.oomph.p2.internal.core.ProfileImpl.getDelegate(ProfileImpl.java:276)
+	at org.eclipse.oomph.p2.internal.core.ProfileImpl.getDelegate(ProfileImpl.java:238)
+	at org.eclipse.oomph.p2.internal.core.ProfileImpl.query(ProfileImpl.java:397)
+	at org.eclipse.equinox.p2.query.CompoundQueryable.getIteratorFromQueryable(CompoundQueryable.java:182)
+	at org.eclipse.equinox.p2.query.CompoundQueryable.everything(CompoundQueryable.java:120)
+	at org.eclipse.equinox.internal.p2.metadata.expression.RepeatableIterator$IndexProviderIterator.<init>(RepeatableIterator.java:151)
+	at org.eclipse.equinox.internal.p2.metadata.expression.RepeatableIterator.create(RepeatableIterator.java:67)
+	at org.eclipse.equinox.p2.query.ExpressionMatchQuery.perform(ExpressionMatchQuery.java:78)
+	at org.eclipse.equinox.internal.p2.metadata.index.IndexProvider.query(IndexProvider.java:27)
+	at org.eclipse.equinox.internal.p2.metadata.index.IndexProvider.query(IndexProvider.java:37)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.gatherApplicableAnnotations(SetupUIPlugin.java:603)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.handleProblemAnnotations(SetupUIPlugin.java:486)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.handleBrandingNotificationURI(SetupUIPlugin.java:353)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.performStartup(SetupUIPlugin.java:1038)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin$1$1.run(SetupUIPlugin.java:279)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.oomph.setup.ui 2 0 2026-01-07 11:07:02.775
+!MESSAGE Attempt to access stopped agent: org.eclipse.equinox.internal.p2.core.ProvisioningAgent@d24776f
+!STACK 0
+java.lang.IllegalStateException: Attempt to access stopped agent: org.eclipse.equinox.internal.p2.core.ProvisioningAgent@d24776f
+	at org.eclipse.equinox.internal.p2.core.ProvisioningAgent.checkRunning(ProvisioningAgent.java:93)
+	at org.eclipse.equinox.internal.p2.core.ProvisioningAgent.getService(ProvisioningAgent.java:53)
+	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.ignoreExistingProfile(SimpleProfileRegistry.java:336)
+	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.internalGetProfile(SimpleProfileRegistry.java:287)
+	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.getProfile(SimpleProfileRegistry.java:204)
+	at org.eclipse.oomph.p2.internal.core.AgentImpl.getCurrentProfile(AgentImpl.java:411)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.gatherApplicableAnnotations(SetupUIPlugin.java:536)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.handleNotificationAnnotations(SetupUIPlugin.java:499)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.handleBrandingNotificationURI(SetupUIPlugin.java:362)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.performStartup(SetupUIPlugin.java:1038)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin$1$1.run(SetupUIPlugin.java:279)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.oomph.setup.ui 4 0 2026-01-07 11:07:02.778
+!MESSAGE Attempt to access stopped agent: org.eclipse.equinox.internal.p2.core.ProvisioningAgent@d24776f
+!STACK 0
+java.lang.IllegalStateException: Attempt to access stopped agent: org.eclipse.equinox.internal.p2.core.ProvisioningAgent@d24776f
+	at org.eclipse.equinox.internal.p2.core.ProvisioningAgent.checkRunning(ProvisioningAgent.java:93)
+	at org.eclipse.equinox.internal.p2.core.ProvisioningAgent.getService(ProvisioningAgent.java:53)
+	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.ignoreExistingProfile(SimpleProfileRegistry.java:336)
+	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.internalGetProfile(SimpleProfileRegistry.java:287)
+	at org.eclipse.equinox.internal.p2.engine.SimpleProfileRegistry.getProfile(SimpleProfileRegistry.java:204)
+	at org.eclipse.oomph.p2.internal.core.AgentImpl.getCurrentProfile(AgentImpl.java:411)
+	at org.eclipse.oomph.setup.p2.impl.P2TaskImpl.isNeeded(P2TaskImpl.java:688)
+	at org.eclipse.oomph.setup.internal.core.SetupTaskPerformer.initNeededSetupTasks(SetupTaskPerformer.java:2297)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin.performStartup(SetupUIPlugin.java:1053)
+	at org.eclipse.oomph.setup.ui.SetupUIPlugin$1$1.run(SetupUIPlugin.java:279)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
