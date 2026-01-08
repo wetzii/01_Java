@@ -9,17 +9,7 @@ public class SalariedEmployee extends Employee{
 			this.monthlySalaray = monthlySalaray;
 			
 		}
-		/*
-		2. SalariedEmployee
-		• Fields
-		‣ monthlySalary
-	
-		‣ givenRaise(double percent)
-		– monthlySalary wird um den angegebenen Prozentsatz erhöht. Checken Sie auch,
-		ob der Parameter korrekte Werte beinhaltet!
-		‣ calculateMonthlySalery
-		– gibt das Monatsgehalt aus
-		*/
+		
 		public void givenRaise(double percent) {
 			  if(percent > 0) {
 				  monthlySalaray *= percent;
@@ -29,5 +19,8 @@ public class SalariedEmployee extends Employee{
 		}
 		public int getMonthlySalaray() {
 			return monthlySalaray;
+		}
+		public  void calculateMonthlySalary() {
+			System.out.printf("Dein Gehalt: %d", monthlySalaray );
 		}
 }

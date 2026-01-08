@@ -37,4 +37,8 @@ public class HourlyEmployee extends Employee {
 	public void changeHourlyRate(double newRate) {
 			hourlyRate = newRate;
 	}
+	public void calculateMonthlySalary() {
+		System.out.printf("Dein Gehalt: ", monthlyHours * hourlyRate);
+	}
+	
 }

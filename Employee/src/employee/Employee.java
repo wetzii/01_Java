@@ -20,7 +20,7 @@ public abstract  class Employee {
 				System.out.println("UNGÜLTIGE EINGABE!!!");
 			}
 		}
-		public abstract void calculateMonthlySalary();
+		public abstract void  calculateMonthlySalary();
 			
 	
 		 @Override
