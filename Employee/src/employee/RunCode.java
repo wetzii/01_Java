@@ -2,11 +2,20 @@ package employee;
 
 public class RunCode {
 	public static void main(String[] args) {
-	Employee employee = new Employee("2",3)
-			.changeName("Max Danninger");
-	SalariedEmw SalariedEmployee(3000, "Max Schneider",0);
-	employployee salEmployee = (SalariedEmployee) employee; 
-	salEmployee.givenRaise(0.2);
-	employee.calculateMonthlySalary();
+	HourlyEmployee hourlyEmployee = new HourlyEmployee("Hausberg,", 3, 19.2,120);
+	
+			hourlyEmployee.changeName("Max Danninger");
+			hourlyEmployee.addHours(9);
+			hourlyEmployee.changeHourlyRate(20.4);
+			hourlyEmployee.calculateMonthlySalary();
+		
+					
+			System.out.println("----------------------------------------------------------");
+			
+			SalariedEmployee salariedEmployee = new SalariedEmployee(2900, "Nüs", 9);
+	
+			salariedEmployee.changeName("Sigma");
+			salariedEmployee.givenRaise(25);
+			salariedEmployee.calculateMonthlySalary();
 	}
 }

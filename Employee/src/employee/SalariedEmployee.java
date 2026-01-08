@@ -11,8 +11,9 @@ public class SalariedEmployee extends Employee{
 		}
 		
 		public void givenRaise(double percent) {
-			  if(percent > 0) {
-				  monthlySalaray *= percent;
+			  if(percent > 0) { 
+				  monthlySalaray = ((int)percent /100 +1) * monthlySalaray;
+				  System.out.println("Dein Gehalt jetzt : "+monthlySalaray);
 			  }else {
 				  System.out.println("Du kannst nicht - Prozente bekommen");
 			  }

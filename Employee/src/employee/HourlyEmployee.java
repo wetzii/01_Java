@@ -26,7 +26,7 @@ public class HourlyEmployee extends Employee {
 	//– fügt die übergebenen Stunden den monthlyHours hinzu
 	public void addHours(int increaseHours) {
 		monthlyHours += increaseHours;
-		System.out.printf("Stunden wurdr um %d erhöht\n", monthlyHours);
+		System.out.printf("Stunden wurden um %d erhöht\n", monthlyHours);
 	}
 	public void resetMonthlyHours() {
 		monthlyHours = 0;
@@ -38,7 +38,8 @@ public class HourlyEmployee extends Employee {
 			hourlyRate = newRate;
 	}
 	public void calculateMonthlySalary() {
-		System.out.printf("Dein Gehalt: ", monthlyHours * hourlyRate);
+	    // %.2f sorgt dafür, dass das Gehalt mit 2 Nachkommastellen angezeigt wird
+	    System.out.printf("Dein Gehalt: %.2f\n", monthlyHours * hourlyRate);
 	}
 	
 }
