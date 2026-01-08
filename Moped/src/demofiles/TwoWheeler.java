@@ -43,11 +43,7 @@ public abstract class   TwoWheeler {
 		this.engine = engine;
 	}
 	
-	public abstract void speedUp(int increase) { //Abstrakte Methode ohne Body
-		speed += increase;
-		System.out.printf("Du beschleunigst um %d km/h auf %d km/h", increase, getSpeed());
-		
-	}
+	public abstract void speedUp(int increase) ;
 	public void slowDown(int decrease ) {
 		speed -= decrease;
 		System.out.printf("Du drossels um %d km/h auf %d km/h", decrease, getSpeed());
