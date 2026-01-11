@@ -6,6 +6,7 @@ public abstract  class Employee {
 		private String name;
 		private int employeeID;
 		
+		//Konstrukter
 		public Employee(String name, int employeeID) {
 			this.name = name;
 			this.employeeID = employeeID;
@@ -20,6 +21,7 @@ public abstract  class Employee {
 				System.out.println("UNGÜLTIGE EINGABE!!!");
 			}
 		}
+		//Abstrakte Methode
 		public abstract void  calculateMonthlySalary();
 			
 	
