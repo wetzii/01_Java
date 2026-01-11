@@ -28,6 +28,7 @@ public class Snack implements Sellable {
 
     @Override
     public void sellOne() {
+    	
         if (isAvalibale()) {
             stock--;
             System.out.println(label + " verkauft. Restbestand: " + stock);
