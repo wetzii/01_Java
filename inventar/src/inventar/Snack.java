@@ -2,10 +2,10 @@ package inventar;
 public class Snack implements Sellable {
 
     private String label;
-    private double priceCents;
+    private int priceCents;
     private int stock;
 
-    public Snack(String label, double priceCents, int stock) {
+    public Snack(String label, int priceCents, int stock) {
         this.label = label;
         this.priceCents = priceCents;
         this.stock = stock;
@@ -17,7 +17,7 @@ public class Snack implements Sellable {
     }
 
     @Override
-    public double getPriceCent() {
+    public int getPriceCent() {
         return priceCents;
     }
 

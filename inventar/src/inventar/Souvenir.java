@@ -3,22 +3,22 @@ package inventar;
 public class Souvenir implements Sellable {
 
     private String label;
-    private double priceCents;
+    private int priceCents;
     private int stock;
 
-    public Souvenir(String label, double priceCents, int stock) {
+    public Souvenir(String label, int priceCents, int stock) {
         this.label = label;
         this.priceCents = priceCents;
         this.stock = stock;
     }
-
+ 
     @Override
     public String getLabel() {
         return label;
     }
 
     @Override
-    public double getPriceCent() {
+    public int getPriceCent() {
         return priceCents;
     }
 
