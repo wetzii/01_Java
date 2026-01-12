@@ -20,7 +20,6 @@ public class Snack implements Sellable {
     public int getPriceCent() {
         return priceCents;
     }
-
     @Override
     public boolean isAvalibale() {
         return stock > 0;
