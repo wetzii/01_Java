@@ -26,6 +26,9 @@ public class Player extends Persons {
 	public void setCredits(int credits) {
 		this.credits += credits;
 	}
+	public int getCredits() {
+		return credits;
+	}
 	@Override
 	public boolean performRole() {
 		 if(credits > 0) {
