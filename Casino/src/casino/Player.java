@@ -29,6 +29,12 @@ public class Player extends Persons {
 	public int getCredits() {
 		return credits;
 	}
+	public int getPlayedGame() {
+		return playedGames;
+	}
+	public void setPlayedGamesUp() {
+		playedGames++;
+	}
 	@Override
 	public boolean performRole() {
 		 if(credits > 0) {
