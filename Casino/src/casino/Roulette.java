@@ -10,9 +10,8 @@ public class Roulette implements Playable{
 			player.setPlayedGamesUp();
 			Scanner scan = new Scanner(System.in);
 			System.out.println("------------------Roulette------------------");
-			System.out.printf("Willkomen %s bei Roulette\n", player.getName());
-			System.out.println("Du kannst gewinnen in dem du Die gleiche Zahl wie der Croupier hast oder wenn du ungerade oder gerade hast");
-			System.out.println("Ungerade und Gerade bestimmst du in dem du Ungerade oder Gerade Zah eingibst");
+			System.out.println("Du kannst gewinnen in dem du Die gleiche Zahl wie der Croupier hast oder wenn du ungerade oder gerade hast!");
+			System.out.println("Ungerade und Gerade bestimmst du in dem du Ungerade oder Gerade Zah eingibst!");
 			
 			int num;
 			int rewardMulti;
@@ -36,8 +35,8 @@ public class Roulette implements Playable{
 				addReward(place, rewardMulti, player);
 				
 			}else {
-				System.out.println("Deine Nummer "+num);
-				System.out.println("Richtige Nummer" +rightNum  );
+				System.out.println("Deine Nummer: "+num);
+				System.out.println("Richtige Nummer: " +rightNum);
 				loseMessage(player);
 			}
 		}
@@ -45,10 +44,12 @@ public class Roulette implements Playable{
 
 @Override
 	public void loseMessage(Player player) {
+	System.out.println("L------L------L-----LOSE------L------L------");
 		System.out.printf("%s hat bei Roulette leider verloren Versuche es nochmal!!!!\n", player.getName());
 	}
 @Override
 public void winMessage(Player player) {
+	System.out.println("W----W----W----W----WIN----W----W----W----W-");
 	System.out.printf("TOP %s hat bei Roulette gewonnen\n", player.getName());
 	}
 @Override

@@ -50,10 +50,12 @@ public void playRound(Player player, Croupier croupier, int place) {
 
 @Override
 	public void loseMessage(Player player) {
+	System.out.println("L------L------L-----LOSE------L------L------");
 		System.out.printf("%s hat bei Slot Maschiene Leider Verloren Versuche es nochmal! \n",player.getName());
 	}
 @Override
 	public void winMessage(Player player) {
+	System.out.println("W----W----W----W----WIN----W----W----W----W-");
 		System.out.printf("%s hat Bei Slot Maschine Gewonnen TOLL!!!\n", player.getName());
 	}
 @Override
