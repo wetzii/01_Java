@@ -12,8 +12,8 @@ ansonsten wird eine loseMessage angezeigt
 	
 public int[] spin() {
 	int[] slotMaschine = new int[5];
-	for (int i = 0; i >5; i++) {
-		slotMaschine[i] = ((int) Math.random()*9) +1;
+	for (int i = 0; i < 5; i++) {
+		slotMaschine[i] = (int) (Math.random()*9) +1;
 	}
 	return slotMaschine;
 }
@@ -21,28 +21,30 @@ public int[] spin() {
 public void playRound(Player player, Croupier croupier, int place) {
 	if(croupier.checkPlace(place, player)) {
 		
-		System.out.println("Willkomen bei Slot-Maschiene");
+		System.out.println("---------------Slot Maschine----------------");
 		System.out.println("Hast du 3 Gleiche Zahlen Bekommst du das 12 Fache");
 		Scanner scan = new Scanner(System.in);
 		System.out.println("(Belibige Taste) um fortzufahren");
-		scan.next();
+		scan.nextLine();
 		int[] nums = spin();
-		System.out.println("-X-X-X-X-X-X-X-X-X-X-X-X-X");
-		System.out.printf("|[%d] [%d] [%d] [%d] [%d]|\n",nums[0], nums[1], nums[2], nums[3],nums[4]);
-		System.out.println("--------------------------------------");
-		boolean allTrue = true;;
-		for(int i = 0; i > nums.length; i++) {
-			if(nums[0] != nums[i]) {
-				allTrue = false;
-				}
+		System.out.println("|-|-|-|-|-|-|-|-|-|-Spin-|-|-|-|-|-|-|-|-|-|");
+		System.out.printf("------------[%d] [%d] [%d] [%d] [%d]-------------\n",nums[0], nums[1], nums[2], nums[3],nums[4]);
+		System.out.println("|-|-|-|-|-|-|-|-|-|-||-|-|-|-|-|-|-|-|-|-|-|\n");
+		boolean allSame = true;
+		
+		for (int i = 1; i < nums.length; i++) {
+			if (nums[i] != nums[0]) {
+				allSame = false;
+				break;
 			}
-		if(allTrue) {
+		}
+
+		if(allSame) {
 			winMessage(player);
 			addReward(place, 50, player);
 		}else {
 		loseMessage(player);
 			}
-		scan.close();
 		}
 	}
 

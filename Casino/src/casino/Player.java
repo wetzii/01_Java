@@ -3,24 +3,24 @@ package casino;
 public class Player extends Persons {
 	private int credits;
 	private int playedGames;
-	public Player(String name) {
+	public Player(String name, int startCredits) {
 		super(name);
-		credits = 0;
+		credits = startCredits;
 	}
 	public void addCredits(int addCredits) {
 		if (addCredits > 0) {
-			System.out.printf("Du hast %d Credits hinzugefügt den standt Steigt von %d --> %d", addCredits,credits,credits+addCredits);
+			System.out.printf("Du hast %d Credits hinzugefügt den standt Steigt von %d --> %d\n", addCredits,credits,credits+addCredits);
 			credits += addCredits;
 		}
 	}
-	public int placeCredits(int place) {
-		if(place > 0) {
+	public boolean placeCredits(int place) {
+		if(place > 0 && place <=credits) {
 			System.out.println(place + "Credits wurden gesetzt");
-			return place;
+			return true;
 			
 		}else {
 			System.out.println("Ungültiger Einsatz");
-			return 0;
+			return false;
 		}
 	}
 	public void setCredits(int credits) {

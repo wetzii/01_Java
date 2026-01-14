@@ -9,17 +9,20 @@ public class Roulette implements Playable{
 		if(croupier.checkPlace(place, player)) {
 			player.setPlayedGamesUp();
 			Scanner scan = new Scanner(System.in);
-			System.out.printf("Willkomen %s bei Roulette", player.getName());
+			System.out.println("------------------Roulette------------------");
+			System.out.printf("Willkomen %s bei Roulette\n", player.getName());
 			System.out.println("Du kannst gewinnen in dem du Die gleiche Zahl wie der Croupier hast oder wenn du ungerade oder gerade hast");
 			System.out.println("Ungerade und Gerade bestimmst du in dem du Ungerade oder Gerade Zah eingibst");
+			
 			int num;
 			int rewardMulti;
 			do{
+				System.out.println("------------------Eingabe-------------------");
 				System.out.println("Gib deine Zahl 0 - 36");
 				num = scan.nextInt();
 			}while(num < 0 || num > 36) ;
 			System.out.printf("%d wurde auf Zahl %d gesetzt\n", place, num);
-			int rightNum = (int) Math.random() * 36;
+			int rightNum = (int) (Math.random() * 37);
 			
 			if(num == rightNum ) {
 				winMessage(player);
@@ -33,9 +36,10 @@ public class Roulette implements Playable{
 				addReward(place, rewardMulti, player);
 				
 			}else {
+				System.out.println("Deine Nummer "+num);
+				System.out.println("Richtige Nummer" +rightNum  );
 				loseMessage(player);
 			}
-			scan.close();
 		}
 	}
 

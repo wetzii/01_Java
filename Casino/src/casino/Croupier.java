@@ -6,8 +6,8 @@ public class Croupier extends Persons {
 		super(name);
 	}
 	public boolean checkPlace(int place, Player player) {
-		if((player.getCredits() + place)/2 > place) {
-			System.out.println("Ungültiger Einsatz du Setzt mehr wie die Hälfte deiner Credits");
+		if(player.getCredits()/2 < place) {
+			System.out.println("Ungültiger Einsatz du Setzt mehr wie die Hälfte deiner Credits\n");
 			System.out.printf("Du hast %d Credits zurück gebucht bekommen\n", place);
 			return false;
 		}else {
