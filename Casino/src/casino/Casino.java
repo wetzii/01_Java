@@ -22,7 +22,9 @@ können*/
 	}
 	public static void main(String[] args) {
 		printLogo();
-		Scanner scanner = new Scanner(System.in);
+		Scanner scan = new Scanner(System.in);
+		Player player = createPlayer(scan);
+		Croupier croupier = createCroupier();
 	}
 	public static Player createPlayer(Scanner scan) {
 	System.out.println("Gib deinen Namen ein: ");
@@ -32,5 +34,32 @@ können*/
 	public static Croupier createCroupier() {
 		Croupier croupier = new Croupier("Nino");
 		return croupier;
+	}
+	public void mainMenu(Scanner scan, Player player, Croupier croupier) {
+		System.out.println("-----------------Hauptmenu-----------------");
+		System.out.println("(1) --> Spiele Roulette");
+		System.out.println("(2)--> Spiele Slotmachine");
+		System.out.println("(3)--> Infos");
+		System.out.println("(0) --> Exit");
+		int choice = scan.nextInt();
+		
+		switch (choice) {
+		case 0: 
+			return;
+			
+		case 1: 
+			//Roulette
+			break;
+		case 2:
+			//Slotmaschine
+			break;
+		case 3: 
+			//Neue Methode im Plyer Damkit Kontostand und gespielte SPiele Ausgegeben wird Maybe +- Rechnung
+			break;
+			
+		default:
+			System.out.println("Ungültige Eingabe!!!!");
+			break;
+		}
 	}
 }
