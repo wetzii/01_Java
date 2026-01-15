@@ -5,31 +5,31 @@ import java.util.Scanner;
 public class Roulette implements Playable{
 @Override
 
-	public void playRound(Player player, Croupier croupier, int place) {
+	public void playRound(Player player, Croupier croupier, int place) { 
 		if(croupier.checkPlace(place, player)) {
 			player.setPlayedGamesUp();
-			Scanner scan = new Scanner(System.in);
+			Scanner scan = new Scanner(System.in); // Ich muss Scanner Objekt hier erstellen, da in der Angabe nichts vom Scanner übergeben steht --> Kann ich auch nicht schließen Programm funktioniert sonst nicht
 			System.out.println("------------------Roulette------------------");
 			System.out.println("Du kannst gewinnen in dem du Die gleiche Zahl wie der Croupier hast oder wenn du ungerade oder gerade hast!");
 			System.out.println("Ungerade und Gerade bestimmst du in dem du Ungerade oder Gerade Zah eingibst!");
-			
+			 
 			int num;
-			int rewardMulti;
+			int rewardMulti; //Damit wird der Gewinn ermittelt
 			do{
 				System.out.println("------------------Eingabe-------------------");
 				System.out.println("Gib deine Zahl 0 - 36");
-				num = scan.nextInt();
+				num = scan.nextInt(); // USerabfrage
 			}while(num < 0 || num > 36) ;
-			System.out.printf("%d wurde auf Zahl %d gesetzt\n", place, num);
+			System.out.printf("%d wurde auf Zahl %d gesetzt\n", place, num); 
 			int rightNum = (int) (Math.random() * 37);
 			
-			if(num == rightNum ) {
+			if(num == rightNum ) { // Wenn der Sieler die Gleiche Zahl hat
 				winMessage(player);
 				rewardMulti = 36;
 				addReward(place, rewardMulti, player);
 				
 				
-			}else if(num %2 == rightNum %2 && num != 0 && rightNum != 0) {
+			}else if(num %2 == rightNum %2 && num != 0 && rightNum != 0) { // Wenn der Spieler ungerade oder gerade richtig hat
 				winMessage(player);
 				rewardMulti = 2;
 				addReward(place, rewardMulti, player);

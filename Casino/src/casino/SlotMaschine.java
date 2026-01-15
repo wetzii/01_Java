@@ -3,13 +3,7 @@ package casino;
 import java.util.Scanner;
 
 public class SlotMaschine  implements Playable{
-/*
- SlotMachine prüft beim Spieldurchlauf zuerst ebenfalls, ob der Croupier den Einsatz
-akzeptiert. Wenn ja, werden zufällig zwei Zahlen zwischen 1 und 4 gedreht. Sind
-beide gleich, erhält der Spieler das 5fache seines Einsatzes und eine winMessage,
-ansonsten wird eine loseMessage angezeigt
- */
-	
+
 public int[] spin() {
 	int[] slotMaschine = new int[5];
 	for (int i = 0; i < 5; i++) {
@@ -23,11 +17,11 @@ public void playRound(Player player, Croupier croupier, int place) {
 		
 		System.out.println("---------------Slot Maschine----------------");
 		System.out.println("Hast du 3 Gleiche Zahlen Bekommst du das 12 Fache");
-		Scanner scan = new Scanner(System.in);
+		Scanner scan = new Scanner(System.in);// Ich muss Scanner Objekt hier erstellen, da in der Angabe nichts vom Scanner übergeben steht --> Kann ich auch nicht schließen Programm funktioniert sonst nicht
 		System.out.println("(Belibige Taste) um fortzufahren");
 		scan.nextLine();
 		int[] nums = spin();
-		System.out.println("|-|-|-|-|-|-|-|-|-|-Spin-|-|-|-|-|-|-|-|-|-|");
+		System.out.println("--------------------------------------------");
 		System.out.printf("------------[%d] [%d] [%d] [%d] [%d]-------------\n",nums[0], nums[1], nums[2], nums[3],nums[4]);
 		System.out.println("|-|-|-|-|-|-|-|-|-|-||-|-|-|-|-|-|-|-|-|-|-|\n");
 		boolean allSame = true;

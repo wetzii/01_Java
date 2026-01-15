@@ -1,7 +1,7 @@
 package casino;
 
 import java.util.Scanner;
-import java.util.jar.Attributes.Name;
+
 
 public class Casino {
 
@@ -15,28 +15,29 @@ public class Casino {
 		
 	}
 	
-	public static Player createPlayer(Scanner scan) {
+	public static Player createPlayer(Scanner scan) { //Spieler erstellen
 	System.out.println("Gib deinen Namen ein: ");
 	String nameString = scan.nextLine();
-	int startCredits = 0;
+	int startCredits = 0;//Fehlerabfrage
 	while(startCredits < 1) {
 		System.out.println("Wie viele Credits möchtest du  Kaufen 1€ --> 10 Credits");
 		startCredits = scan.nextInt();
 		scan.nextLine();
 		}
-	System.out.printf("Das Kostet %.2f€\n", (float)startCredits/10 );
-	Player player = new Player(nameString,startCredits);
+	System.out.printf("Das Kostet %.2f€\n", (float)startCredits/10 ); // EInfache Umrechunng wie viele € wie viele Tokens sind
+	
+	Player player = new Player(nameString,startCredits); //Objekt wird erstellt
 	return player;
 	}
 	
 	public static Croupier createCroupier() {
-		Croupier croupier = new Croupier("Nino");
+		Croupier croupier = new Croupier("Nino"); //Ganz einfach Objekt erstellen
 		return croupier;
 	}
-	public static Roulette createRoulette() {
-		return new Roulette();
+	public static Roulette createRoulette() {//Muss erstellt werden sonst keinen Zugriff
+		return new Roulette(); 
 	}
-	public static SlotMaschine createSlotMaschine() {
+	public static SlotMaschine createSlotMaschine() { //Muss erstellt werden sonst keinen Zugriff
 		return new SlotMaschine();
 	}
 	public static void mainMenu(Scanner scan, Player player, Croupier croupier, Roulette roulette, SlotMaschine slotMaschine) {
