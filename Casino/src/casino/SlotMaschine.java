@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class SlotMaschine  implements Playable{
 
-public int[] spin() {
+public int[] spin() { // Methode macht Array mit zufälligen zahlen
 	int[] slotMaschine = new int[5];
 	for (int i = 0; i < 5; i++) {
 		slotMaschine[i] = (int) (Math.random()*9) +1;
@@ -23,11 +23,12 @@ public void playRound(Player player, Croupier croupier, int place) {
 		int[] nums = spin();
 		System.out.println("--------------------------------------------");
 		System.out.printf("------------[%d] [%d] [%d] [%d] [%d]-------------\n",nums[0], nums[1], nums[2], nums[3],nums[4]);
-		System.out.println("|-|-|-|-|-|-|-|-|-|-||-|-|-|-|-|-|-|-|-|-|-|\n");
-		boolean allSame = true;
+		System.out.println("--------------------------------------------");
+		System.out.println("");
+		boolean allSame = true; //Standart mäßig auf true und wenn eine Stelle nicht gleich ist wird er verändert
 		
-		for (int i = 1; i < nums.length; i++) {
-			if (nums[i] != nums[0]) {
+		for (int i = 1; i < nums.length; i++) { // Überprüfung ob gewinn
+			if (nums[i] != nums[0]) { //Wenn i nicht wie die erste Stelle ist wird boolean auf false gesetzt
 				allSame = false;
 				break;
 			}
