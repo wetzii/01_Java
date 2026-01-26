@@ -61,16 +61,4 @@ Spieler-Gold -10
 		super.changeTrust(3);
 		super.changeAlertness(-3);
 	}
-	@Override
-		public void collectGold() {
-			System.out.println("Kommt noch");
-		}
-	@Override
-		public boolean checkWinGold() {
-			if(super.getAlertness()  <= 0) {
-				return true;
-			}else {
-				return false;
-			}
-		}
 }
