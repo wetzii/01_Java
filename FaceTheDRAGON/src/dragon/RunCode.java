@@ -5,11 +5,10 @@ import java.util.Scanner;
 public class RunCode {
 	public static void main(String[] args) {
 		greeter();
-// Andeer Drachen nacher !
-	AbstractDragon dragon = new ProudDragon("Test");
+//
 	Scanner scan = new Scanner(System.in);
 	Player player = new Player("Matthi");
-	mainMenu(scan, player, dragon);
+	mainMenu(scan, new Player("Dein Name"), randDragon());
 	scan.close();
 	}
 	public static void greeter() {
@@ -58,6 +57,8 @@ public class RunCode {
 			case 4:
 				dragon.reactGetClose();
 				break;
+			case 5:
+				printStats(player, dragon);
 		}
 	}
 	public static AbstractDragon[] createDragons() {
@@ -91,5 +92,13 @@ public class RunCode {
 	public static AbstractDragon randDragon(){
 		AbstractDragon[] dragons= createDragons();
 		return dragons[(int) (Math.random() * dragons.length)];
+	}
+	public static void printStats(Player player, AbstractDragon dragon) {
+		System.out.println("Dein Name: " + player.getName());
+		System.out.println("Dein Gold: "+ player.getGold());
+		System.out.println("-----------------------------");
+		System.out.println("Name des Drachens:  "+ dragon.getName());
+		System.out.println("Achtsamkeit des Drachens: "+dragon.getAlertness());
+		System.out.println("Vertrauen des Drachens: "+ dragon.getTrust());
 	}
 }

@@ -30,7 +30,7 @@ private int alertness;
 	}
 	public void changeAlertness(int changeAlertness) {
 		if(alertness + changeAlertness > 0) {
-		System.out.printf("Die Wachsamkeit änder sich von %d auf %d\n", alertness , alertness + changeAlertness);
+		System.out.printf("Die Wachsamkeit ändert sich von %d auf %d\n", alertness , alertness + changeAlertness);
 		alertness += changeAlertness;
 		}else {
 			System.out.println("Die Wachsamkeit liegt auf 0");

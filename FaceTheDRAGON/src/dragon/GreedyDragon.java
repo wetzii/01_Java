@@ -2,15 +2,6 @@ package dragon;
 
 public class GreedyDragon extends AbstractDragon{
 	
- /*
- Kompliment: Vertrauen +2, Wachsamkeit +1
-‣ Füttern: (gelungen): Vertrauen +5, Wachsamkeit -2
-‣ Füttern: (misslungen): Vertrauen -4, Wachsamkeit +3
-‣ Singen: Vertrauen +1, Wachsamkeit -3
-‣ Geschenk: nur wenn Spieler genug Gold hat: Vertrauen +14, Wachsamkeit -6,
-Spieler-Gold -10
-– sonst: Vertrauen -6, Wachsamkeit +2
-‣ Nähern: Vertrauen -2, Wachsamkeit +2*/
 	 public GreedyDragon(String name) {
 		super(name, 20, 84);
 	}
@@ -42,7 +33,7 @@ Spieler-Gold -10
 	    boolean status;
 			if(player.getGold() >= 10) {
 				System.out.println("Geschenk wurde übergeben!");
-				player.decGold(-10);
+				player.decGold(10);
 				super.changeTrust(14);
 				super.changeAlertness(-6);
 				status =  true;	
