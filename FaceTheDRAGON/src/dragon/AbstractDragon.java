@@ -1,5 +1,7 @@
 package dragon;
-public abstract  class AbstractDragon {
+
+
+public abstract  class AbstractDragon implements GoalGold, GoalRide{
 	/*
 	 *• Abstrakte Klasse AbstractDragon
 ‣ Gemeinsame Attribute: name, trust, alertness (Wachsamkeit)
@@ -44,19 +46,53 @@ private int alertness;
 		//MUss noch schaeun was Kommt!
 		System.out.println("--");
 	}
-	public boolean checkWonTrust() {
-		if (trust >= 80) {
-			return  true;
+	
+	public void feedHimMaster() {
+		int rand =(int ) (Math.random() *2);
+		if(rand == 0) {
+			reactFeedHimPos();
+		}else if(rand == 1) {
+			reactFeedHimNeg();
+		}
+	}
+	public boolean checkWinMaster() {
+		if(checkWinGoal() || checkWinRide()) {
+			return true;
 		}else {
 			return false;
 		}
 	}
-	public boolean checkWonAlterness() {
-		if (alertness == 0) {
-			return  true;
+	@Override
+	public boolean checkWinGoal() {
+		if(alertness <= 0) {
+			winMsgGold();
+			return true;
 		}else {
 			return false;
+		}	
+	}
+	@Override
+	public void collectGold(Player player) {
+		player.decGold(200000); //Muss geändert werden
+		
+	}
+	@Override
+	public void winMsgGold() {
+		System.out.println("Du hast den Schatz bekommen!");
+	}
+	@Override
+	public boolean checkWinRide() {
+		if(trust >= 100) {
+			winMsgRide();
+			return true;
+		} else {
+			return false;
 		}
+	}
+	@Override
+	public void winMsgRide() {
+		System.out.println("Juhu du hast den Drachen für die bekommen --> Fliege mit Ihm");
+		
 	}
 
 	public abstract void reactCompliment();

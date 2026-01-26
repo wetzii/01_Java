@@ -12,8 +12,15 @@ private int gold;
 	public int getGold() {
 		return gold;
 	}
-	public void setGold(int changedGold) {
-		System.out.printf("Das Gold ändert sich von %d auf %d\n", gold , gold + changedGold);
-		gold += gold;
+	public String getName() {
+		return name;
+	}
+	public void decGold(int changedGold) {
+		if(changedGold <= gold) {
+		System.out.printf("Das Gold ändert sich um %d auf %d\n reduziert", gold , gold - changedGold);
+		gold -= changedGold;
+		} else {
+			System.out.println("Du hast kein Gold dafür!");
+		}
 	}
 }

@@ -50,7 +50,7 @@ Spieler-Gold -10
 				System.out.println("Geschenk wurde übergeben!");
 				System.out.println("Der Drache findet es ok!");
 				System.out.println("-----------------------------------------------------");
-				player.setGold(-10);
+				player.decGold(10);
 				super.changeTrust(4);
 				super.changeAlertness(-2);
 				status =  true;	

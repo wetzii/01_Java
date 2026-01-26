@@ -43,7 +43,7 @@ Spieler-Gold -10
 	    boolean status;
 			if(player.getGold() >= 10) {
 				System.out.println("Geschenk wurde übergeben!");
-				player.setGold(-10);
+				player.decGold(-10);
 				super.changeTrust(5);
 				super.changeAlertness(-2);
 				status =  true;	
