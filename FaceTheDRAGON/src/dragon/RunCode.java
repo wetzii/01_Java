@@ -94,6 +94,7 @@ public class RunCode {
 		return dragons[(int) (Math.random() * dragons.length)];
 	}
 	public static void printStats(Player player, AbstractDragon dragon) {
+		System.out.println("-------------------------------");
 		System.out.println("Dein Name: " + player.getName());
 		System.out.println("Dein Gold: "+ player.getGold());
 		System.out.println("-----------------------------");
