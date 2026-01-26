@@ -2,8 +2,6 @@ package dragon;
 
 public class GreedyDragon extends AbstractDragon{
 	
-
-
  /*
  Kompliment: Vertrauen +2, Wachsamkeit +1
 ‣ Füttern: (gelungen): Vertrauen +5, Wachsamkeit -2

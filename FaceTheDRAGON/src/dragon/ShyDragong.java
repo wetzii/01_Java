@@ -1,6 +1,6 @@
 package dragon;
 
-public class ShyDragong extends AbstractDragon {
+public class ShyDragong extends AbstractDragon{
 /*
  *• ShyDragon (Start: Vertrauen 30, Wachsamkeit 70)
 ‣ Kompliment: Vertrauen +5, Wachsamkeit -2
@@ -60,5 +60,17 @@ Spieler-Gold -10
 		System.out.println("Du näherst dich den Drachen an!");
 		super.changeTrust(3);
 		super.changeAlertness(-3);
+	}
+	@Override
+		public void collectGold() {
+			System.out.println("Kommt noch");
+		}
+	@Override
+		public boolean checkWinGold() {
+			if(super.getAlertness()  <= 0) {
+				return true;
+			}else {
+				return false;
+			}
 		}
 }

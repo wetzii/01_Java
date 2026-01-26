@@ -1,7 +1,8 @@
 package dragon;
 
 public interface GoalGold {
-	public boolean checkWin();
+	public boolean checkWinGoal();
 	public void winMsg();
+	public void collectGold();
 	
 }
