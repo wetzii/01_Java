@@ -1,6 +1,6 @@
 package dragon;
 
-public class Player {
+public class Player implements Status {
 private String name;
 private int gold;
 //Mybe kommt nacher nochwas
@@ -23,4 +23,10 @@ private int gold;
 			System.out.println("Du hast kein Gold dafür!");
 		}
 	}
+
+		@Override
+			public String getStatus() {
+				return "Name: "+ name+ "\nGold: "+ gold;
+			}
 }
+

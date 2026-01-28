@@ -1,7 +1,7 @@
 package dragon;
 
 
-public abstract  class AbstractDragon implements GoalGold, GoalRide{
+public abstract  class AbstractDragon implements GoalGold, GoalRide, Status{
 	/*
 	 *• Abstrakte Klasse AbstractDragon
 ‣ Gemeinsame Attribute: name, trust, alertness (Wachsamkeit)
@@ -93,6 +93,10 @@ private int alertness;
 	public void winMsgRide() {
 		System.out.println("Juhu du hast den Drachen für die bekommen --> Fliege mit Ihm");
 		
+	}
+	@Override
+	public String getStatus() {
+		return "Name: " + name + "\nVertrauen: " + trust + "\nWachsamkeit: " + alertness + "\n";
 	}
 
 	public abstract void reactCompliment();

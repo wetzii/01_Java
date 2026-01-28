@@ -1,6 +1,5 @@
 package dragon;
 
-import java.io.ObjectInputFilter.Status;
 import java.util.Scanner;
 
 public class RunCode {
@@ -32,7 +31,7 @@ public class RunCode {
 		System.out.println("(2) --> für Drachen singen");
 		System.out.println("(3) --> Drache Geschenk machen");
 		System.out.println("(4) --> Drache annähern");
-		System.out.println("(5) --> Werte ausgeben)");
+		System.out.println("(5) --> Werte ausgeben");
 		System.out.println("(0) --> Spiel beenden!");
 		status = doAction(player, dragon, askMainManu(scan));
 		if(dragon.checkWinMaster()) {
@@ -67,6 +66,7 @@ public class RunCode {
 				break;
 			case 5:
 				printStats(player, dragon);
+				break;
 			case 0:
 				goodbye();
 				status = false;
@@ -108,12 +108,9 @@ public class RunCode {
 	}
 	public static void printStats(Player player, AbstractDragon dragon) {
 		System.out.println("-------------------------------");
-		System.out.println("Dein Name: " + player.getName());
-		System.out.println("Dein Gold: "+ player.getGold());
+		System.out.println(player.getStatus());
 		System.out.println("-----------------------------");
-		System.out.println("Name des Drachens:  "+ dragon.getName());
-		System.out.println("Achtsamkeit des Drachens: "+dragon.getAlertness());
-		System.out.println("Vertrauen des Drachens: "+ dragon.getTrust());
+		System.out.println(dragon.getStatus());
 	}
 	public static Player createUser(Scanner scan) {
 		System.out.println("Gib deinen Namen ein: ");
