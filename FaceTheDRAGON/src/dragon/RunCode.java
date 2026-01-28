@@ -1,7 +1,7 @@
 package dragon;
 
+import java.io.ObjectInputFilter.Status;
 import java.util.Scanner;
-import java.util.jar.Attributes.Name;
 
 public class RunCode {
 	public static void main(String[] args) {
@@ -13,7 +13,6 @@ public class RunCode {
 	Scanner scan = new Scanner(System.in);
 	mainMenu(scan, createUser(scan), randDragon());
 	scan.close();
-	System.out.println("dA");
 	}
 	public static void greeter(){
 		System.out.println("___{_____ __________    _____    ________ ________    _______   \n"
@@ -24,7 +23,9 @@ public class RunCode {
 				+ "        \\/       \\/         \\/        \\/         \\/         \\/ ");
 	}
 	public static void mainMenu(Scanner scan, Player player, AbstractDragon dragon) {
-		while (true) {
+		boolean status = true;
+		
+		while (status == true) {
 			System.out.println("------------------------------------");
 		System.out.println("Was möchtest du machen?");
 		System.out.println("(1) --> Füttern");
@@ -32,7 +33,8 @@ public class RunCode {
 		System.out.println("(3) --> Drache Geschenk machen");
 		System.out.println("(4) --> Drache annähern");
 		System.out.println("(5) --> Werte ausgeben)");
-		doAction(player, dragon, askMainManu(scan));
+		System.out.println("(0) --> Spiel beenden!");
+		status = doAction(player, dragon, askMainManu(scan));
 		if(dragon.checkWinMaster()) {
 			return;
 				}
@@ -48,7 +50,8 @@ public class RunCode {
 		return user;
 	}
 	
-	public static void doAction(Player player, AbstractDragon dragon, int choice) {
+	public static boolean doAction(Player player, AbstractDragon dragon, int choice) {
+		boolean status = true;
 		switch(choice) {
 			case 1: 
 				dragon.feedHimMaster();
@@ -66,7 +69,10 @@ public class RunCode {
 				printStats(player, dragon);
 			case 0:
 				goodbye();
+				status = false;
+				return status;
 		}
+		return status;
 	}
 	public static AbstractDragon[] createDragons() {
 		String[] dragonNames = {
@@ -118,6 +124,6 @@ public class RunCode {
 		greeter();
 		System.out.println("------------------------------------");
 		System.out.println("Schön das du gespielt hast!");
-		System.out.println("Bis zum nächsten mal");
+		System.out.println("Bis zum nächsten mal!");
 	}
 }
