@@ -1,18 +1,22 @@
 package dragon;
 
 import java.util.Scanner;
+import java.util.jar.Attributes.Name;
 
 public class RunCode {
 	public static void main(String[] args) {
 		greeter();
-//
+		
+//Noch wichtig den User Namen abfragen !! --> eigene Methode
+		//Rest müsste funktionieren 
+		//Spiel noch beenden wäre top!
 	Scanner scan = new Scanner(System.in);
-	Player player = new Player("Matthi");
-	mainMenu(scan, new Player("Dein Name"), randDragon());
+	mainMenu(scan, createUser(scan), randDragon());
 	scan.close();
+	System.out.println("dA");
 	}
-	public static void greeter() {
-		System.out.println("________ __________    _____    ________ ________    _______   \n"
+	public static void greeter(){
+		System.out.println("___{_____ __________    _____    ________ ________    _______   \n"
 				+ "\\______ \\\\______   \\  /  _  \\  /  _____/ \\_____  \\   \\      \\  \n"
 				+ " |    |  \\|       _/ /  /_\\  \\/   \\  ___  /   |   \\  /   |   \\ \n"
 				+ " |    `   \\    |   \\/    |    \\    \\_\\  \\/    |    \\/    |    \\\n"
@@ -40,9 +44,10 @@ public class RunCode {
 			System.out.println("Eingabe-------------------");
 			user = scan.nextInt();
 			scan.nextLine();
-		}while(user < 1 && user > 5);
+		}while(user < 0 && user > 5);
 		return user;
 	}
+	
 	public static void doAction(Player player, AbstractDragon dragon, int choice) {
 		switch(choice) {
 			case 1: 
@@ -59,6 +64,8 @@ public class RunCode {
 				break;
 			case 5:
 				printStats(player, dragon);
+			case 0:
+				goodbye();
 		}
 	}
 	public static AbstractDragon[] createDragons() {
@@ -101,5 +108,16 @@ public class RunCode {
 		System.out.println("Name des Drachens:  "+ dragon.getName());
 		System.out.println("Achtsamkeit des Drachens: "+dragon.getAlertness());
 		System.out.println("Vertrauen des Drachens: "+ dragon.getTrust());
+	}
+	public static Player createUser(Scanner scan) {
+		System.out.println("Gib deinen Namen ein: ");
+		String name = scan.nextLine();
+		return new Player(name);	
+	}
+	public static void goodbye () {
+		greeter();
+		System.out.println("------------------------------------");
+		System.out.println("Schön das du gespielt hast!");
+		System.out.println("Bis zum nächsten mal");
 	}
 }
