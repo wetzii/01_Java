@@ -2,6 +2,7 @@ package dragon;
 
 public class ShyDragong extends AbstractDragon{
 
+	//Alle Methoden werden überschrieben und mit den Richtigen Werten versehen
 	public ShyDragong(String name) {
 		super(name, 30, 70);
 	}
@@ -29,6 +30,8 @@ public class ShyDragong extends AbstractDragon{
 		}
 	@Override
 		public boolean reactToGift(Player player) {
+		//einfache Abfrage ob genügend Gold da ist
+		//Satus ist da um zurückzugeben ob das Geschenk übergeben wird oder nicht --> Muss nicht unbedingt verwendet werden
 	    boolean status;
 			if(player.getGold() >= 10) {
 				System.out.printf("Geschenk wurde an %s übergeben!\n", getName());

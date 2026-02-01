@@ -1,7 +1,7 @@
 package dragon;
 
 public class GreedyDragon extends AbstractDragon{
-	
+	//Alle methoden werden überschrieben und mit Werten versehen 
 	 public GreedyDragon(String name) {
 		super(name, 20, 84);
 	}

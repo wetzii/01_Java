@@ -2,13 +2,7 @@ package dragon;
 
 
 public abstract  class AbstractDragon implements GoalGold, GoalRide, Status{
-	/*
-	 *• Abstrakte Klasse AbstractDragon
-‣ Gemeinsame Attribute: name, trust, alertness (Wachsamkeit)
-‣ Gemeinsame Methoden: Getter, changeTrust(…), changeAlertness(…), status()
-‣ Abstrakte Methoden für Reaktionen auf die 5 Aktionen (z.B. reactToCompli-
-ment(), …)
-	 */
+
 	
 private int trust;
 private String name;
@@ -55,6 +49,8 @@ private int alertness;
 			reactFeedHimNeg();
 		}
 	}
+	//In dieser Methode wird überprüft ob man Gewonnen hat so werden auch beide Anwendungen überprüft
+	//Sieges nachchricht kommt in den Methoden checkWinGoal() oder CheckWinRide()
 	public boolean checkWinMaster() {
 		if(checkWinGoal() || checkWinRide()) {
 			return true;
@@ -71,11 +67,8 @@ private int alertness;
 			return false;
 		}	
 	}
-	@Override
-	public void collectGold(Player player) {
-		player.decGold(200000); //Muss geändert werden
 		
-	}
+	
 	@Override
 	public void winMsgGold() {
 		System.out.println("Du hast den Schatz bekommen!");
@@ -98,7 +91,7 @@ private int alertness;
 	public String getStatus() {
 		return "Name: " + name + "\nVertrauen: " + trust + "\nWachsamkeit: " + alertness + "\n";
 	}
-
+//Alle Abstrakten Methoden
 	public abstract void reactCompliment();
 	public abstract void  reactFeedHimPos();
 	public abstract void reactFeedHimNeg();

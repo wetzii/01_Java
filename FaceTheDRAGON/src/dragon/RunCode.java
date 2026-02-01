@@ -6,14 +6,11 @@ public class RunCode {
 	public static void main(String[] args) {
 		greeter();
 		
-//Noch wichtig den User Namen abfragen !! --> eigene Methode
-		//Rest müsste funktionieren 
-		//Spiel noch beenden wäre top!
 	Scanner scan = new Scanner(System.in);
 	mainMenu(scan, createUser(scan), randDragon());
 	scan.close();
 	}
-	public static void greeter(){
+	public static void greeter(){ //Greeter ist da um Grafik auszugeben --> Grafik wird nicht auf jeden Gerät richtig ausgegeben
 		System.out.println("___{_____ __________    _____    ________ ________    _______   \n"
 				+ "\\______ \\\\______   \\  /  _  \\  /  _____/ \\_____  \\   \\      \\  \n"
 				+ " |    |  \\|       _/ /  /_\\  \\/   \\  ___  /   |   \\  /   |   \\ \n"
@@ -24,7 +21,7 @@ public class RunCode {
 	public static void mainMenu(Scanner scan, Player player, AbstractDragon dragon) {
 		boolean status = true;
 		
-		while (status == true) {
+		while (status == true) {  //Methode die immer die Grafik ausgibt was man spielen kann
 			System.out.println("------------------------------------");
 		System.out.println("Was möchtest du machen?");
 		System.out.println("(1) --> Füttern");
@@ -39,7 +36,7 @@ public class RunCode {
 				}
 			}
 		}
-	public static int askMainManu(Scanner scan) {
+	public static int askMainManu(Scanner scan) {   //methode ist nur da um Abzufragen was man machen möchte
 		int user;
 		do {
 			System.out.println("Eingabe-------------------");
@@ -49,7 +46,7 @@ public class RunCode {
 		return user;
 	}
 	
-	public static boolean doAction(Player player, AbstractDragon dragon, int choice) {
+	public static boolean doAction(Player player, AbstractDragon dragon, int choice) { //Diese Methode bekommt eine Zahl und leitet dann weiter was man machen kann
 		boolean status = true;
 		switch(choice) {
 			case 1: 
@@ -98,26 +95,27 @@ public class RunCode {
 		                      "WiFire"
 		};
 
-		
+		//Neuer Drache wird erstellt und mit einem Random Name instanziieret --> funktioniert mnit math.random die eine Zufällige Array Position erzeugt
 		AbstractDragon[] dragons = {new ShyDragong(dragonNames[(int)(Math.random() * dragonNames.length)]), new GreedyDragon(dragonNames[(int)(Math.random() * dragonNames.length)]), new ProudDragon(dragonNames[(int)(Math.random() * dragonNames.length)])}; 
+		//Also die Methode erzeugt einen Array mit jeder "Drachen Art" welcher Drache dann zum Spiel kommt entscheident andere Methode
 		return dragons;
 	}
-	public static AbstractDragon randDragon(){
-		AbstractDragon[] dragons= createDragons();
-		return dragons[(int) (Math.random() * dragons.length)];
+	public static AbstractDragon randDragon(){ 
+		AbstractDragon[] dragons= createDragons(); //Führt Methode aus die ale 3 Drachen erzeugt 
+		return dragons[(int) (Math.random() * dragons.length)]; //ein Drache wird wandom genommen und zurückgegeben
 	}
-	public static void printStats(Player player, AbstractDragon dragon) {
+	public static void printStats(Player player, AbstractDragon dragon) { //Status von Allen Werten wird ausgegeben
 		System.out.println("-------------------------------");
 		System.out.println(player.getStatus());
 		System.out.println("-----------------------------");
 		System.out.println(dragon.getStatus());
 	}
-	public static Player createUser(Scanner scan) {
+	public static Player createUser(Scanner scan) {  //user erstellen inkl Abfrage von Namen 
 		System.out.println("Gib deinen Namen ein: ");
 		String name = scan.nextLine();
 		return new Player(name);	
 	}
-	public static void goodbye () {
+	public static void goodbye () { //Nachricht die kommt wenn man spiel beendet
 		greeter();
 		System.out.println("------------------------------------");
 		System.out.println("Schön das du gespielt hast!");
