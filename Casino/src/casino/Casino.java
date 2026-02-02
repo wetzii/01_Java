@@ -17,9 +17,15 @@ public class Casino {
 	}
 	
 	public static Player createPlayer(Scanner scan) { //Spieler erstellen
+		boolean status = false;
+		String nameString = null;
+		int startCredits = -1;
+		
+		while(!status){
 	System.out.println("Gib deinen Namen ein: ");
-	String nameString = scan.nextLine();
-	int startCredits = 0;  //Fehlerabfrage
+	 nameString = scan.nextLine();
+	 try {
+		 
 	while(startCredits < 30) {
 		if(startCredits < 30) {
 			System.out.println("Du musst mehr wie 30 aufladen!");
@@ -28,10 +34,16 @@ public class Casino {
 		startCredits = scan.nextInt();
 		scan.nextLine();
 		}
-	System.out.printf("Das Kostet %.2f€\n", (float)startCredits/10 ); // EInfache Umrechunng wie viele € wie viele Tokens sind
 	
+	System.out.printf("Das Kostet %.2f€\n", (float)startCredits/10 ); // EInfache Umrechunng wie viele € wie viele Tokens sind
+		
 	Player player = new Player(nameString,startCredits); //Objekt wird erstellt
 	return player;
+		} catch (Exception e) {
+	 System.err.println("Gib bitte eine Zahl ein!");
+			}
+		}
+		return null;
 	}
 	
 	public static Croupier createCroupier() {
@@ -46,6 +58,10 @@ public class Casino {
 	}
 	public static void mainMenu(Scanner scan, Player player, Croupier croupier, Playable[] games) {
 			while(true) {
+				boolean status = false;
+				int choice = -1;
+				while(!status) {
+			try { 
 			System.out.println("-----------------Hauptmenu-----------------");
 			System.out.println("(1--> Spiele Roulette");
 			System.out.println("(2)--> Spiele Slotmachine");
@@ -53,7 +69,18 @@ public class Casino {
 			System.out.println("(4)--> Credits anzeigen)");
 			System.out.println("(0) --> Exit");
 			System.out.println("------------------Eingabe------------------");
-			int choice = scan.nextInt();
+			
+		     	choice = scan.nextInt();	
+		     	if(choice > 5 || choice < 0) {
+		     		status = true;
+				}
+			}catch (Exception e) {
+				System.err.println("Bitte gib eine Zahl ein!");
+				scan.nextLine();
+			}
+			
+			
+				}
 		   int place;
 			switch (choice) {
 			case 0: 
@@ -73,24 +100,35 @@ public class Casino {
 			case 3: 
 			addCredits(scan, player);
 				break;
-			case 5:
+			case 4:
 				System.out.println("Deine Creditsstand: "+player.getCredits());
+				break;
 				
 			default:
-				System.out.println("Ungültige Eingabe!!!!");
+				System.err.println("Ungültige Eingabe!!!!");
 			}	
 		}
 	}
 	public static int placeBet(Player player, Scanner scan) {
-		int place;
+		boolean status = false;
+		
+		int place = -1;
+		while(!status) {
+			
 		do {
+			try {
 			System.out.println("Wie hoch ist dein Einsatz?");
 			System.out.printf("Dein Kontostand: %d |möglicher Einsatz: %d\n", player.getCredits(), player.getCredits()/2);
 			System.out.println("Wie viel möchtest du setzten: ");
 			place = scan.nextInt();
-
-		}while (!player.placeCredits(place) );
+			}catch(Exception e) {
+				System.err.println("Gib eine Zahl ein!");
+				scan.nextLine();
+			}
+		}while (!player.placeCredits(place));
 		return place;
+		}
+		return -1;
 	}
 	public static void goodbye() {
 		printLogo();
@@ -111,9 +149,23 @@ public class Casino {
 		System.out.println("----------------------------------------------------");	
 	}
 	public static void addCredits(Scanner scan, Player player) {
+		boolean status = false;
+		int add = -1;
+		while (!status) {
+		try {
 		System.out.println("---------------Credits-Kaufen---------------");
 		System.out.println("Wie viele Credits möchtest du  Kaufen 1€ --> 10 Credits");
-		int add = scan.nextInt();
+		add = scan.nextInt();
+		if(add > 0) {
+			status = true;
+		}else {
+			System.out.println("Gib mehr wie 0 ein!");
+		}
+		} catch (Exception e) {
+			System.err.println("Gib eine Zahl ein!");
+		}
 		player.addCredits(add);
+		scan.nextLine();
+		}
 	}
 }
