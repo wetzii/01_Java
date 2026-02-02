@@ -71,7 +71,7 @@ public class Casino {
 			System.out.println("------------------Eingabe------------------");
 			
 		     	choice = scan.nextInt();	
-		     	if(choice > 5 || choice < 0) {
+		     	if(choice < 5 && choice >= 0) {
 		     		status = true;
 				}
 			}catch (Exception e) {

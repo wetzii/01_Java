@@ -13,13 +13,18 @@ public class Roulette implements Playable{
 			System.out.println("Du kannst gewinnen in dem du Die gleiche Zahl wie der Croupier hast oder wenn du ungerade oder gerade hast!");
 			System.out.println("Ungerade und Gerade bestimmst du in dem du Ungerade oder Gerade Zah eingibst!");
 			 
-			int num;
+			int num = -1;
 			int rewardMulti; //Damit wird der Gewinn ermittelt
+			try {
 			do{
+			
 				System.out.println("------------------Eingabe-------------------");
 				System.out.println("Gib deine Zahl 0 - 36");
 				num = scan.nextInt(); // USerabfrage
 			}while(num < 0 || num > 36) ;
+			}catch(Exception e) {
+				System.out.println("Gib eine Zahl ein: ");
+			}
 			System.out.printf("%d wurde auf Zahl %d gesetzt\n", place, num); 
 			int rightNum = (int) (Math.random() * 37);
 			
