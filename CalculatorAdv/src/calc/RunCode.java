@@ -34,6 +34,26 @@ public class RunCode {
 		
 		try {
 		System.out.println("-----------Eingabe-----------");
+		choice = scan.nextInt();
+		scan.nextInt();
 		
+	}catch(Exception e) {
+		throw new IllegalArgumentException();
+	}
+		
+	}
+	public static void CheckPosRange(Operators[] ops, int choice) {
+		if(choice-1 > 0 || choice-1 < ops.length ) {
+			throw new IllegalArgumentException("Gib eine Zahl im Gültigen Bereich ein!");
+		}
+	}
+	public static void doCalc(int choice, Operators[] ops, int[] nums) {
+		try {
+		ops[choice-1].check(nums);
+		ops[choice-1].printResult(nums, ops[choice-1].calc(nums));
+		} catch (Exception e) {
+			System.err.println("Test");
+		}
+			
 	}
 }
