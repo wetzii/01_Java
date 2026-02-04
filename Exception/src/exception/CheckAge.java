@@ -20,6 +20,7 @@ public class CheckAge {
 				System.out.println("Bitte gib eine Zahl ein! ");
 				System.out.println(e.getMessage());
 				System.out.println(e.getClass().getSimpleName());
+				scan.nextLine();
 			}
 		}
 	}
