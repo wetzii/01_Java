@@ -16,7 +16,11 @@ public abstract class  Operators {
 	public String getName() {
 		return operator;
 	}
+	public int getNum(int i) {
+		return nums[i];
+	}
+
 	public abstract double calc(int[] nums);
 	public abstract void printResult(int[] nums, double result);
-	public abstract void check(int[] nums);
+	public abstract void check();
 }

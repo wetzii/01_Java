@@ -7,18 +7,18 @@ public class Power extends Operators {
 	}
 	@Override
 	public double calc(int[] nums) {
-		check(nums);
+		check();
 		double result = Math.pow(nums[0] , nums[1]);
 		return result;
 	}
 	@Override
-	public void check(int[] nums) {
+	public void check() {
 		
-		if(nums[1]  > 20) {
+		if(getNum(1) > 20) {
 			throw new IllegalArgumentException("Die Potenz sollte kleiner gliech wie 20 sein");
 		}
-		if(nums[1] < 20) {
-			throw new IllegalArgumentException("Die Potenz sollte Größer gleich wie 20 sein!!");
+		if(getNum(1) < -20) {
+			throw new IllegalArgumentException("Die Potenz sollte Größer gleich wie -20 sein!!");
 		}
 	}
 	@Override

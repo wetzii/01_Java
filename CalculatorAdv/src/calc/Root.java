@@ -7,17 +7,17 @@ public class Root extends Operators {
 	}
 	@Override
 	public double calc(int[] nums) {
-		check(nums);
+		check();
 		double result = Math.pow(nums[0] , 1/nums[1]);
 		return result;
 	}
 	@Override
-	public void check(int[] nums) {
+	public void check() {
 		
-		if(nums[0]  == 0) {
+		if(getNum(0)  == 0) {
 			throw new IllegalArgumentException("Es kann nicht die 0. Wurzel sein!");
 		}
-		if(nums[1] < 0 && nums[0] % 2 == 0 ) {
+		if(getNum(1) < 0 && getNum(0) % 2 == 0 ) {
 			throw new IllegalArgumentException("Die Diskriminante darf nicht kleiner wie 0 sein wenn a Gerade ist!");
 		}
 	}

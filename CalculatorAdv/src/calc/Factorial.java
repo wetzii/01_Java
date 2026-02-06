@@ -3,11 +3,12 @@ package calc;
 public class Factorial extends Operators{
 
 		public  Factorial(int[] nums) {
-			 	super(nums, "Prozent Rechnung");
+			 	super(nums, "Faktorial");
 			}
 			@Override
+			
 			public double calc(int[] nums) {
-				check(nums);
+				check();
 				int result = nums[0] ;
 				for (int i = nums[0]; i >= nums[1]; i++) {
 					result *= nums[2];
@@ -15,8 +16,8 @@ public class Factorial extends Operators{
 				return result;
 			}
 			@Override
-			public void check(int[] nums) {
-				if(nums[1] > nums[0]) {	
+			public void check() {
+				if(getNum(1) > getNum(0)) {	
 					throw new IllegalArgumentException("Die 1. Zahl kann nicht größer wie die 2. sein!");
 				}
 			}

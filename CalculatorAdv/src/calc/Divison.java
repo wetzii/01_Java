@@ -7,13 +7,13 @@ public class Divison extends Operators {
 	}
 	@Override
 	public double calc(int[] nums) {
-		check(nums);
+		check();
 		int result = nums[0] / nums[1];
 		return result;
 	}
 	@Override
-	public void check(int[] nums) {
-		if(nums[1] == 0) {
+	public void check() {
+		if(getNum(1)  == 0) {
 			throw new IllegalArgumentException("Der Divisor darf nicht 0 sein");
 		}
 	}
