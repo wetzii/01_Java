@@ -22,8 +22,11 @@ public class DigitalMedia {
 	else if(rating < 0 || rating > 5  ) {
 		throw new IllegalArgumentException("Die Bewertung muss zwischen 0 und 5 Sterne sein");
 		}
+	ratingArray[countRating] = rating;
+	avgRating = calcAvgRating(ratingArray);
 	}
 	public float calcAvgRating(int[] nums) {
+		//Achtung nicht wenn leer ist usste noch machen
 		int sum = 0;
 		for (int n: nums ) {
 			sum += n;
