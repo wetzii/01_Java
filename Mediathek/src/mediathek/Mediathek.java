@@ -1,8 +1,11 @@
 package mediathek;
 
+import java.util.Scanner;
+
 public class Mediathek {
 	public static void main(String[] args) {
 		DigitalMedia[] digitalMedia =  createFilmGames();
+		Newsletter[] news = createNews();
 		
 	}
 	public static DigitalMedia[] createFilmGames() {
@@ -22,5 +25,42 @@ public class Mediathek {
         newsletters[1] = new Newsletter("Gaming News", "Release des neuen Blockbusters steht bevor.", 2);
         newsletters[2] = new Newsletter("Science Journal", "Durchbruch in der Quantenphysik.", 3);
         return newsletters;
+	}
+	public static void printAllMedien(DigitalMedia[] digitalMedias, Newsletter[] news) {
+		
+		for(int i = 0; i < digitalMedias.length; i++) {
+			if(digitalMedias[i] != null) {
+			System.out.printf("(%d) --> %s\n", digitalMedias[i].getTitle());
+			}
+		}
+		for (int idx = 0; idx < news.length; idx++) {
+			if(news[idx] != null) {
+				System.out.printf("(d)--> %s\n", news[idx].getTitle());
+	
+				}
+			}
+	}
+	public static void printMenu() {
+		System.out.println("-------------Deine-Auswahl-------------");
+		System.out.println("(1) -- Digitale Medien Auswahl");
+		System.out.println("(2) -- Auswahl für Bücher");
+		System.out.println("(3) -- Gesamte Inhalte ausgeben");
+	}
+	public static void doFilmGames(int activityCh) { // Hier Kommen noch unter Methoden
+		System.out.println("dd");
+	
+	}
+	public static void rate(DigitalMedia media, Scanner scan) {
+		System.out.printf("Wie möchtest du den Film %s von 0-5 bewerten\n", media.getTitle());
+		int rating = 0;
+		try {
+			rating = scan.nextInt();
+		}
+			catch (Exception e) {
+				System.err.println("Versuche es nochmal wo möglich falscher Datentyp");
+			}
+		media.rate(rating);
+		System.out.println("Bewertung wurde hinzugefügt");
+		
 	}
 }
