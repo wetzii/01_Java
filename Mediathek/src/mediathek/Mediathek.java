@@ -11,9 +11,8 @@ public class Mediathek {
 		
 		
 	}
-	public static DigitalMedia[] createFilmGames() {
+	public static DigitalMedia[] createFilmGames() { //Teile der Methode sind mit KI generiert
 		DigitalMedia[] digitalMedia = new DigitalMedia[5];
-		
 		digitalMedia[0] = new Film("Inception", "SciFi", 148, "Ein Dieb dringt in Traeume ein.");
         digitalMedia[1] = new Film("Interstellar", "SciFi", 169, "Astronauten reisen durch ein Wurmloch.");
         digitalMedia[2] = new Game("Zelda - Breath of the Wild", "Adventure", 3000, new String[]{"Nintendo Switch"});
@@ -21,12 +20,13 @@ public class Mediathek {
         digitalMedia[4] = new Film("The Dark Knight", "Action", 152, "Batman kaempft gegen den Joker.");
         return digitalMedia;
 	}
-	public static Newsletter[] createNews() {
+	public static Newsletter[] createNews() { //Teile der Methode sind mit KI generiert
 		
 		Newsletter[] newsletters = new Newsletter[3];
 		newsletters[0] = new Newsletter("Tech Weekly", "Neue KI-Trends auf dem Vormarsch.", 1);
         newsletters[1] = new Newsletter("Gaming News", "Release des neuen Blockbusters steht bevor.", 2);
         newsletters[2] = new Newsletter("Science Journal", "Durchbruch in der Quantenphysik.", 3);
+        //
         return newsletters;
 	}
 	public static void printAllMedien(DigitalMedia[] digitalMedias, Newsletter[] news) {
