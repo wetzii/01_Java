@@ -9,6 +9,7 @@ public class Mediathek {
 		printAllMedien(digitalMedia, news);
 		
 		
+		
 	}
 	public static DigitalMedia[] createFilmGames() {
 		DigitalMedia[] digitalMedia = new DigitalMedia[5];
@@ -39,20 +40,14 @@ public class Mediathek {
 		System.out.println("(2) -- Auswahl für Bücher");
 		System.out.println("(3) -- Gesamte Inhalte ausgeben");
 	}
-	public static void printDigitalMediaMenu() { 
+	public static void digitalMediaMenu(DigitalMedia[] media) { 
 		System.out.println("(1) --> Bewerten");
 		System.out.println("(2) --> Bewertung ausgeben");
 		System.out.println("(3) --> Anzahl Bewertung ausgeben ");
-		/*• bei digitalen Medien:
-			‣ addRating(int stars)
-			‣ getAverageRating()
-			‣ getNumberOfRatings()
-			‣ play() -> fügt die minuten in neues Array ein
-			‣ search(String keyword) (nur, bei Film! Tipp: instanceof )
-			//Als erstes USer Auswählen lassen was er machen will
-			/// Danach soll der User nur die Verfügbaren sachen sehen
-			////
-	*/
+		System.out.println("(4) --> Abspielen");
+		System.out.println("(5) --> Suchen nach (nur bei Film!)");
+		
+		
 	}
 	public static void rate(DigitalMedia media, Scanner scan) {
 		System.out.printf("Wie möchtest du den Film %s von 0-5 bewerten\n", media.getTitle());
@@ -68,7 +63,7 @@ public class Mediathek {
 		
 	}
 	public static boolean checkIfFilm(DigitalMedia state) {
-		if(state.getClass().getSimpleName() == "Film" ) {
+		if(state.getClass().getSimpleName().equals("Film")) {
 			return true;
 			
 		}else {
@@ -104,6 +99,46 @@ int lastPos = 0;
 				}else {
 					break;
 				}
+
 			}
 	}
+	public static int scanInt(int max , int min) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Deine EIngabe: ");
+		int choice = -1;
+		while(choice < min || choice > max) {
+		try {
+			choice = scan.nextInt();
+		}catch (Exception e) {
+			System.out.println("Ungültige Eingabe");
+			
+			}
+		}
+		return choice;
+	}
+public static void chooseActityDigital(Scanner scan,DigitalMedia[] media) {
+	int choice = scanInt(1, 5);
+	try {
+	//MUss dringend noch abgetrennt werden 
+	switch (choice) {
+	case 1: 
+		rate(media[scanInt(1,media.length)-1], scan);
+		
+	
+	}
+	}catch (Exception e) {
+		
+	}
+	/*• bei digitalen Medien:
+		‣ addRating(int stars)
+		‣ getAverageRating()
+		‣ getNumberOfRatings()
+		‣ play() -> fügt die minuten in neues Array ein
+		‣ search(String keyword) (nur, bei Film! Tipp: instanceof )
+		//Als erstes USer Auswählen lassen was er machen will
+		/// Danach soll der User nur die Verfügbaren sachen sehen
+		////
+*/
+}
+		
 }
