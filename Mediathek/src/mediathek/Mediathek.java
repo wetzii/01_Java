@@ -70,6 +70,7 @@ public class Mediathek {
 	public static boolean checkIfFilm(DigitalMedia state) {
 		if(state.getClass().getSimpleName() == "Film" ) {
 			return true;
+			
 		}else {
 			return false;
 		}
