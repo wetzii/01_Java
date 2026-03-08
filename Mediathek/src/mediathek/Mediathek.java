@@ -9,11 +9,11 @@ public class Mediathek {
 	    int[] playMinutes = new int[10];   
 	    int playMinutesCount = 0;          
 	    Scanner scan = new Scanner(System.in);
-	    
+	    while (true) {
 	    printMenu();
-	    int choice = scanInt(1, 3, scan);
+	    int choice = scanInt(1, 5, scan);
 	    playMinutesCount = doActivity(choice, digitalMedia, news, scan, playMinutes, playMinutesCount);
-	    printAllMedien(digitalMedia, news);
+	    }
 	}
 	public static DigitalMedia[] createFilmGames() { //Teile der Methode sind mit KI generiert
 		DigitalMedia[] digitalMedia = new DigitalMedia[5];
@@ -43,6 +43,8 @@ public class Mediathek {
 		System.out.println("(1) -- Digitale Medien Auswahl");
 		System.out.println("(2) -- Auswahl für Bücher");
 		System.out.println("(3) -- Gesamte Inhalte ausgeben");
+	    System.out.println("(4) -- Gesamt-Spielminuten ausgeben");
+	    System.out.println("(5) -- Maximale Spielminuten ausgeben");
 	}
 	public static void digitalMediaMenu() { 
 		System.out.println("(1) --> Bewerten");
@@ -59,7 +61,7 @@ public class Mediathek {
 	        int rating = scanInt(1, 5, scan); // Bereich überprüfung
 	        media.rate(rating);
 	        System.out.println("Bewertung wurde hinzugefügt!");
-	    } catch (IllegalArgumentException e) {
+	    } catch (Exception e) {
 	        System.out.println("Fehler"); // wenn bereits 5 Ratings
 	    }
 	}
@@ -201,12 +203,19 @@ public class Mediathek {
 	        
 	        case 3: 
 	        	printAllMedien(digMedia, news);
+	        	break;
+	        case 4:
+	            getSumPlayMinutes(playMinutes, playMinutesCount);
+	            break;
+	        case 5:
+	            getMaxMinutes(playMinutes, playMinutesCount);
+	            break;
 	    }
 	    return playMinutesCount;
 	}
 
 	public static int playMedia(DigitalMedia media, int[] playMinutes, int playMinutesCount) {
-	    if (playMinutesCount >= playMinutes.length) {
+	    if (playMinutesCount >= playMinutes.length) { //Wenn alles voll ist
 	        System.out.println("Maximale enträge sind erreicht!");
 	        return playMinutesCount;
 	    }
@@ -229,9 +238,12 @@ public class Mediathek {
 	        System.out.println("Noch keine Medien abgespielt.");
 	        return;
 	    }
-	    int max = playMinutes[0];
-	    for (int i = 1; i < count; i++) {
-	        if (playMinutes[i] > max) max = playMinutes[i];
+	    int max = playMinutes[0]; 
+	    for (int i = 1; i < count; i++) { 
+	        if (playMinutes[i] > max) {
+	        	max = playMinutes[i];  //So überschreib so quasi immer die Höhere zahl
+	        
+	        }
 	    }
 	    System.out.println("Maximale Minuten: " + max);
 	}
