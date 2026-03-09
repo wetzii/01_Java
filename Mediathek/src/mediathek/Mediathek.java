@@ -11,12 +11,20 @@ public class Mediathek {
 	    Scanner scan = new Scanner(System.in);
 	    while (true) {
 	    printMenu();
+	    try {
+	        int choice = scanInt(0, 6, scan);
+	        playMinutesCount = doActivity(choice, digitalMedia, news, scan, playMinutes, playMinutesCount);
+	    } catch (InvalidInputException e) {
+	        System.out.println("Menu error: " + e.getMessage());
+	    }
 	    int choice = scanInt(0, 6, scan);
-	    playMinutesCount = doActivity(choice, digitalMedia, news, scan, playMinutes, playMinutesCount);
+	    
+	 
 	    if(playMinutesCount == -1) {
 	    	System.out.println("Bis zu nächsten mal!");
 	    	break;
 	    }
+	    
 	    }
 	}
 	public static DigitalMedia[] createFilmGames() { //Teile der Methode sind mit KI generiert
