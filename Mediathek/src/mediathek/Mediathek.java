@@ -11,8 +11,12 @@ public class Mediathek {
 	    Scanner scan = new Scanner(System.in);
 	    while (true) {
 	    printMenu();
-	    int choice = scanInt(1, 5, scan);
+	    int choice = scanInt(0, 6, scan);
 	    playMinutesCount = doActivity(choice, digitalMedia, news, scan, playMinutes, playMinutesCount);
+	    if(playMinutesCount == -1) {
+	    	System.out.println("Bis zu nächsten mal!");
+	    	break;
+	    }
 	    }
 	}
 	public static DigitalMedia[] createFilmGames() { //Teile der Methode sind mit KI generiert
@@ -41,10 +45,11 @@ public class Mediathek {
 	public static void printMenu() {
 		System.out.println("-------------Deine-Auswahl-------------");
 		System.out.println("(1) -- Digitale Medien Auswahl");
-		System.out.println("(2) -- Auswahl für Bücher");
+		System.out.println("(2) -- Auswahl für News");
 		System.out.println("(3) -- Gesamte Inhalte ausgeben");
 	    System.out.println("(4) -- Gesamt-Spielminuten ausgeben");
 	    System.out.println("(5) -- Maximale Spielminuten ausgeben");
+	    System.out.println("(0) -- Programm beenden" );
 	}
 	public static void digitalMediaMenu() { 
 		System.out.println("(1) --> Bewerten");
@@ -52,6 +57,8 @@ public class Mediathek {
 		System.out.println("(3) --> Anzahl Bewertung ausgeben ");
 		System.out.println("(4) --> Abspielen");
 		System.out.println("(5) --> Suchen nach (nur bei Film!)");
+		System.out.println("(6) --> Infos ausgeben");
+		System.out.println("(0) --> Zurück");
 		
 		
 	}
@@ -124,7 +131,8 @@ public class Mediathek {
 	    return choice;
 	}
 	public static int chooseActityDigital(Scanner scan, DigitalMedia[] media, int[] playMinutes, int playMinutesCount) {
-	int choice = scanInt(1, 5, scan); //Das ist die Auswahl von allen Möglichen Funktionen mit Digital Media
+		
+	int choice = scanInt(0, 6, scan); //Das ist die Auswahl von allen Möglichen Funktionen mit Digital Media
 
 	//MUss dringend noch abgetrennt werden 
 	switch (choice) {
@@ -132,7 +140,7 @@ public class Mediathek {
 	case 1: 
 		printDigitalMedia(media, "");
 		System.out.println("Welche Digitale Medie möchtest du bewerten: ");
-		int i = scanInt(0, media.length, scan);
+		int i = scanInt(0, media.length - 1, scan);
 		
 		if(media[i] != null) {
 			rate(media[i], scan);
@@ -144,7 +152,8 @@ public class Mediathek {
 	case 2:
 		printDigitalMedia(media, "");
 		System.out.println("Von welcher Medie möchtest du die Bewertungen wissen!");
-		int a = scanInt(0, media.length, scan);
+		int a = scanInt(0, media.length - 1, scan);
+		
 		if(media[a] != null) {
 			System.out.println("Durchscnittliche Bewertung: "+media[a].getAvgRating());
 			media[a].getAvgRating();
@@ -155,7 +164,8 @@ public class Mediathek {
 	case 3:
 		printDigitalMedia(media, "");
 		System.out.println("Von welcher Medie möchtest du die Anzahl der Bewrtungen wissen!");
-		int b = scanInt(0, media.length, scan);
+		int b = scanInt(0, media.length - 1, scan);
+		
 		if(media[b] != null) {
 			System.out.println("Durchscnittliche Bewertung: "+media[b].getNumberOfRatings());
 		}else {
@@ -186,6 +196,11 @@ public class Mediathek {
 	        System.out.println("Suche nur bei Filmen möglich!");
 	    }
 	    break;
+	case 6:
+			getInfo(media);
+			break;
+	case 0:
+		return 0;
 		}
 		
 	return playMinutesCount;
@@ -210,16 +225,21 @@ public class Mediathek {
 	        case 5:
 	            getMaxMinutes(playMinutes, playMinutesCount);
 	            break;
-	      
+	        case 0:
+	        	return -1;
+	        	
 	    }
+	    
 	    return playMinutesCount;
 	}
 
 	public static int playMedia(DigitalMedia media, int[] playMinutes, int playMinutesCount) {
-	    if (playMinutesCount >= playMinutes.length) { //Wenn alles voll ist
+	   
+		if (playMinutesCount >= playMinutes.length) { //Wenn alles voll ist
 	        System.out.println("Maximale enträge sind erreicht!");
 	        return playMinutesCount;
 	    }
+		
 	    playMinutes[playMinutesCount] = media.getPlayMinutes();
 	    playMinutesCount++;
 	    System.out.printf("'%s' wird abgespielt! (%d Minuten hinzugefügt)\n",media.getTitle(), media.getPlayMinutes());
@@ -249,7 +269,7 @@ public class Mediathek {
 	    System.out.println("Maximale Minuten: " + max);
 	}
 	public static void chooseActivityNewsletter(Scanner scan, Newsletter[] news) {
-	    printNews(news, 0);
+	    printNews(news, -1); //-1 weil nacher +2 gerechnet werden
 	    System.out.println("Welchen Newsletter?");
 	    int idx = scanInt(1, news.length, scan);
 	    Newsletter selected = news[idx - 1];
@@ -268,5 +288,14 @@ public class Mediathek {
 	            selected.searchFor(keyword);
 	            break;
 	    }
+	}
+	public static void getInfo(DigitalMedia[] media) {
+		for(int i = 0; i < media.length; i++) {
+			if(media[i] != null) {
+			System.out.println("------------------------------");
+			media[i].getInfo();
+			}
+		}
+		
 	}
 }
