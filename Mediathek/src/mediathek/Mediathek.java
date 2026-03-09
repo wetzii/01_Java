@@ -1,30 +1,31 @@
 package mediathek;
 
+
 import java.util.Scanner;
+
+//Code kann etwas verwirrend sein hab die ganze Zeit noch sSachen hinzufügen müssen
 
 public class Mediathek {
 	public static void main(String[] args) {
 	    DigitalMedia[] digitalMedia = createFilmGames();
 	    Newsletter[] news = createNews();
-	    int[] playMinutes = new int[10];   
-	    int playMinutesCount = 0;          
+	    int[] playMinutes = new int[10];
+	    int playMinutesCount = 0;
 	    Scanner scan = new Scanner(System.in);
 	    while (true) {
-	    printMenu();
-	    try {
-	        int choice = scanInt(0, 6, scan);
-	        playMinutesCount = doActivity(choice, digitalMedia, news, scan, playMinutes, playMinutesCount);
-	    } catch (InvalidInputException e) {
-	        System.out.println("Menu error: " + e.getMessage());
-	    }
-	    int choice = scanInt(0, 6, scan);
-	    
-	 
-	    if(playMinutesCount == -1) {
-	    	System.out.println("Bis zu nächsten mal!");
-	    	break;
-	    }
-	    
+	        printMenu();
+	        try {
+	            int choice = scanInt(0, 6, scan);
+	            playMinutesCount = doActivity(choice, digitalMedia, news, scan, playMinutes, playMinutesCount);
+	        } catch (InvalidInputException e) {
+	            System.out.println("Fehler: " + e.getMessage());
+	        } catch (WrongTypeException e) {
+	            System.out.println("Typ-Fehler: " + e.getMessage());
+	        }
+	        if (playMinutesCount == -1) {
+	            System.out.println("Bis zum nächsten mal!");
+	            break;
+	        }
 	    }
 	}
 	public static DigitalMedia[] createFilmGames() { //Teile der Methode sind mit KI generiert
@@ -34,6 +35,7 @@ public class Mediathek {
         digitalMedia[2] = new Game("Zelda - Breath of the Wild", "Adventure", 3000, new String[]{"Nintendo Switch"});
         digitalMedia[3] = new Game("Elden Ring", "RPG", 3600, new String[]{"PC", "PS5"});
         digitalMedia[4] = new Film("The Dark Knight", "Action", 152, "Batman kaempft gegen den Joker.");
+        
         return digitalMedia;
 	}
 	public static Newsletter[] createNews() { //Teile der Methode sind mit KI generiert
@@ -115,34 +117,26 @@ public class Mediathek {
 
 			}
 	}
-	public static int scanInt(int min, int max, Scanner scan) { //Meine Scanner MEthode hilft damit ich nur einmal fehler überprufung machen muss 
-		System.out.println("");
-	    int choice = -1; 
-
-	    while (choice < min || choice > max) {
-	        System.out.print("Deine Eingabe: ");
-
-	        try {
-	            choice = scan.nextInt();
-
-	            if (choice < min || choice > max) {
-	                System.out.println("Bitte eine Zahl zwischen " + min + " und " + max + " eingeben.");
-	            }
-	        } catch (Exception e) {
-	            System.out.println("Ungültige Eingabe!");
-	            scan.nextLine(); 
+	public static int scanInt(int min, int max, Scanner scan) throws InvalidInputException, WrongTypeException { //Hier abzufangen sehr wichtig extrem hohe Fehler Quelle zum Beispiel außer Bereich oder Datentypfehler
+	    System.out.print("Deine Eingabe: ");
+	    try {
+	        int choice = scan.nextInt();
+	        scan.nextLine();
+	        if (choice < min || choice > max) {
+	            throw new InvalidInputException("Zahl außerhalb des Bereichs!");
 	        }
+	        return choice;
+	    } catch (Exception e) {
+	        scan.nextLine();
+	        throw new WrongTypeException("Kein Integer eingegeben!");
 	    }
-
-	    scan.nextLine(); // Zeilenumbruch entfernen
-	    System.out.println("");
-	    return choice;
 	}
+	
 	public static int chooseActityDigital(Scanner scan, DigitalMedia[] media, int[] playMinutes, int playMinutesCount) {
-		
+		try {
 	int choice = scanInt(0, 6, scan); //Das ist die Auswahl von allen Möglichen Funktionen mit Digital Media
 
-	//MUss dringend noch abgetrennt werden 
+	
 	switch (choice) {
 	//Bei Cases ist das IF sehr oft redudant ist aber wichtig damit der chek erfolgt ob es eh nicht null ist
 	case 1: 
@@ -210,6 +204,11 @@ public class Mediathek {
 	case 0:
 		return 0;
 		}
+	}catch (InvalidInputException e) {
+		System.out.println("Fehler " + e.getMessage());
+	} catch (WrongTypeException e) {
+		System.out.println("Fehler beim Datentyp " + e.getMessage());
+	}
 		
 	return playMinutesCount;
 		
@@ -248,8 +247,8 @@ public class Mediathek {
 	        return playMinutesCount;
 	    }
 		
-	    playMinutes[playMinutesCount] = media.getPlayMinutes();
-	    playMinutesCount++;
+	    playMinutes[playMinutesCount] = media.getPlayMinutes(); // Zeit wird in Array eingefügt
+	    playMinutesCount++; // so quasi der Aktuelle indey steigt um eines
 	    System.out.printf("'%s' wird abgespielt! (%d Minuten hinzugefügt)\n",media.getTitle(), media.getPlayMinutes());
 	    return playMinutesCount;
 	}
@@ -277,6 +276,9 @@ public class Mediathek {
 	    System.out.println("Maximale Minuten: " + max);
 	}
 	public static void chooseActivityNewsletter(Scanner scan, Newsletter[] news) {
+		
+		try {
+			
 	    printNews(news, -1); //-1 weil nacher +2 gerechnet werden
 	    System.out.println("Welchen Newsletter?");
 	    int idx = scanInt(1, news.length, scan);
@@ -295,8 +297,14 @@ public class Mediathek {
 	            String keyword = scan.nextLine();
 	            selected.searchFor(keyword);
 	            break;
+	    		}
+	    } catch (InvalidInputException e) {
+	        System.out.println("Fehler: " + e.getMessage());
+	    } catch (WrongTypeException e) {
+	        System.out.println("Typ-Fehler: " + e.getMessage());
 	    }
-	}
+	   }
+	
 	public static void getInfo(DigitalMedia[] media) {
 		for(int i = 0; i < media.length; i++) {
 			if(media[i] != null) {
