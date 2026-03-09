@@ -210,6 +210,7 @@ public class Mediathek {
 	        case 5:
 	            getMaxMinutes(playMinutes, playMinutesCount);
 	            break;
+	      
 	    }
 	    return playMinutesCount;
 	}
