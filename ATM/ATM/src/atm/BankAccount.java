@@ -2,11 +2,23 @@ package atm;
 
 public class BankAccount {
 
-	private String costumerNameString;
+	private String costumerName;
 	private int pin;
 	private int saldo;
 	
-	private BankAccount(int costumerName, int pin, int saldo){
+	public BankAccount(String costumerName, int pin, int saldo){
+		
+		this.costumerName = costumerName;
 		this.pin = pin;
+		this.saldo = saldo;
+	}
+	public int getPin() {
+		return pin;
+	}
+	public int getSaldo() {
+		return saldo;
+	}
+	public String getCostumerName() {
+		return costumerName;
 	}
 }
