@@ -48,7 +48,7 @@ public class Mediathek {
         return newsletters;
 	}
 	public static void printAllMedien(DigitalMedia[] digitalMedias, Newsletter[] news) {
-		int lastPos = printDigitalMedia(digitalMedias, "Game"); //Condition bleinbt in diesen Fall leer
+		int lastPos = printDigitalMedia(digitalMedias, ""); //Condition bleinbt in diesen Fall leer
 		printNews(news, lastPos);
 		
 	}
@@ -140,41 +140,41 @@ public class Mediathek {
 	switch (choice) {
 	//Bei Cases ist das IF sehr oft redudant ist aber wichtig damit der chek erfolgt ob es eh nicht null ist
 	case 1: 
-		printDigitalMedia(media, "");
-		System.out.println("Welche Digitale Medie möchtest du bewerten: ");
-		int i = scanInt(0, media.length - 1, scan);
-		
-		if(media[i] != null) {
-			rate(media[i], scan);
-		}else {
-			System.out.println("Ungültige Eingabe");
-		}
-		break;
-	
+	    printDigitalMedia(media, "");
+	    System.out.println("Welche Digitale Medie möchtest du bewerten: ");
+	    int i = scanInt(1, media.length, scan);
+	    
+	    if(media[i - 1] != null) {
+	        rate(media[i - 1], scan);
+	    }else {
+	        System.out.println("Ungültige Eingabe");
+	    }
+	    break;
+
 	case 2:
-		printDigitalMedia(media, "");
-		System.out.println("Von welcher Medie möchtest du die Bewertungen wissen!");
-		int a = scanInt(0, media.length - 1, scan);
-		
-		if(media[a] != null) {
-			System.out.println("Durchscnittliche Bewertung: "+media[a].getAvgRating());
-			media[a].getAvgRating();
-		}else {
-			System.out.println("Ungültige Eingabe");
-		}
-		break;
+	    printDigitalMedia(media, "");
+	    System.out.println("Von welcher Medie möchtest du die Bewertungen wissen!");
+	    int a = scanInt(1, media.length, scan);
+	    
+	    if(media[a - 1] != null) {
+	        System.out.println("Durchscnittliche Bewertung: "+media[a - 1].getAvgRating());
+	    }else {
+	        System.out.println("Ungültige Eingabe");
+	    }
+	    break;
+
 	case 3:
-		printDigitalMedia(media, "");
-		System.out.println("Von welcher Medie möchtest du die Anzahl der Bewrtungen wissen!");
-		int b = scanInt(0, media.length - 1, scan);
-		
-		if(media[b] != null) {
-			System.out.println("Durchscnittliche Bewertung: "+media[b].getNumberOfRatings());
-		}else {
-			System.out.println("Ungültige Eingabe");
-		}
-		break;
-		
+	    printDigitalMedia(media, "");
+	    System.out.println("Von welcher Medie möchtest du die Anzahl der Bewrtungen wissen!");
+	    int b = scanInt(1, media.length, scan);
+	    
+	    if(media[b - 1] != null) {
+	        System.out.println("Durchscnittliche Bewertung: "+media[b - 1].getNumberOfRatings());
+	    }else {
+	        System.out.println("Ungültige Eingabe");
+	    }
+	    break;
+	    
 	case 4:
 	    printDigitalMedia(media, "");
 	    System.out.println("Was möchtest du abspielen?");
@@ -198,11 +198,13 @@ public class Mediathek {
 	        System.out.println("Suche nur bei Filmen möglich!");
 	    }
 	    break;
+
 	case 6:
-			getInfo(media);
-			break;
+	    getInfo(media);
+	    break;
+
 	case 0:
-		return 0;
+	    return 0;
 		}
 	}catch (InvalidInputException e) {
 		System.out.println("Fehler " + e.getMessage());
@@ -312,6 +314,7 @@ public class Mediathek {
 			media[i].getInfo();
 			}
 		}
+		
 		
 	}
 }

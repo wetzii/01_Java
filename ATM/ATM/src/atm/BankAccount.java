@@ -5,6 +5,7 @@ public class BankAccount {
 	private String costumerName;
 	private int pin;
 	private int saldo;
+	private static int accountCount = 0;
 	
 	public BankAccount(String costumerName, int pin, int saldo){
 		

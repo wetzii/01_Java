@@ -2,22 +2,37 @@ package atm;
 
 public class ATM {
 	
-	private String name;
-	static private int globalSum;
+	private String serialNumber;
+	private String location;
+	private boolean status;
 	
 	
-	public ATM (String name) {
-		this.name = name;
+	public ATM (String name, String location, String serialNumber) {
+		this.serialNumber = serialNumber;
+		this.location = location;
+		this.status = true;
 	}
+	
 	public boolean checkPin(BankAccount acc, int pin) {
-		return acc.getPin() == pin;
-			
+		return acc.getPin() == pin;			
 	}
-	public boolean drawMoney throws new InvalidDrawAmount (BankAccount acc, int sum) {
-		if(sum > acc.getSaldo()) {
-			return false;
-		}else {
-			throw new InvalidDrawAmount("Du hast nicht genügend Geld auf den Konto");
-		} 
+	public boolean drawMoney (BankAccount acc, int sum)  throws InvalidDrawAmount {
+	
+			if( sum > acc.getSaldo()) {
+				throw new InvalidDrawAmount("Du hast nicht genügend Geld auf den Konto");
+			}
+			return true;
+	}
+	public void changeStatus() {
+		status = !status;
+	}
+	public boolean getStatus() {
+		return status;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public String getSerialNumber() {
+		return serialNumber;
 	}
 }
