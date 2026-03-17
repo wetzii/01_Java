@@ -5,7 +5,7 @@ public class BankAccount {
 	private String costumerName;
 	private int pin;
 	private int saldo;
-	private static int accountCount = 0;
+	static int accountCount = 0;
 	
 	public BankAccount(String costumerName, int pin, int saldo){
 		
@@ -21,5 +21,8 @@ public class BankAccount {
 	}
 	public String getCostumerName() {
 		return costumerName;
+	}
+	public void serAccountCountUp() {
+		accountCount ++;
 	}
 }

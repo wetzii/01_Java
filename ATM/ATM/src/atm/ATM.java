@@ -5,12 +5,14 @@ public class ATM {
 	private String serialNumber;
 	private String location;
 	private boolean status;
+	private int transactionCount;
 	
 	
 	public ATM (String name, String location, String serialNumber) {
 		this.serialNumber = serialNumber;
 		this.location = location;
 		this.status = true;
+		this.transactionCount = 0;
 	}
 	
 	public boolean checkPin(BankAccount acc, int pin) {
