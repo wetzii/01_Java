@@ -1,28 +1,41 @@
 package atm;
 
 public class BankAccount {
+    private static int accountCount = 0;   // zählt alle erstellten Konten
 
-	private String costumerName;
-	private int pin;
-	private int saldo;
-	static int accountCount = 0;
-	
-	public BankAccount(String costumerName, int pin, int saldo){
-		
-		this.costumerName = costumerName;
-		this.pin = pin;
-		this.saldo = saldo;
-	}
-	public int getPin() {
-		return pin;
-	}
-	public int getSaldo() {
-		return saldo;
-	}
-	public String getCostumerName() {
-		return costumerName;
-	}
-	public void serAccountCountUp() {
-		accountCount ++;
-	}
+    private String customerName;
+    private int pin;
+    private double saldo;
+
+    public BankAccount(String customerName, int pin, double saldo) {
+        this.customerName = customerName;
+        this.pin = pin;
+        this.saldo = saldo;
+        accountCount++;
+    }
+
+  
+    public static int getAccountCount() { //Alle Accounts werden zurück gegeben -> (globaler Count)
+        return accountCount;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public int getPin() {
+        return pin;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void deposit(double amount) {
+        saldo += amount;
+    }
+
+    public void withdraw(double amount) {
+        saldo -= amount;
+    }
 }

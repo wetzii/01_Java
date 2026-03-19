@@ -5,18 +5,18 @@ public class ATM {
 	private String serialNumber;
 	private String location;
 	private boolean status;
-	private int transactionCount;
+	private static int transactionCount;
 	
 	
-	public ATM (String name, String location, String serialNumber) {
+	public ATM (String name, String location, String serialNumber, Saboteur sab) {
 		this.serialNumber = serialNumber;
 		this.location = location;
 		this.status = true;
-		this.transactionCount = 0;
+		sab.pushAtmToArray(this);
 	}
 	
 	public boolean checkPin(BankAccount acc, int pin) {
-		return acc.getPin() == pin;			
+		return acc.getPin() == pin;
 	}
 	public boolean drawMoney (BankAccount acc, int sum)  throws InvalidDrawAmount {
 	
