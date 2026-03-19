@@ -37,4 +37,6 @@ public class ATM {
 	public String getSerialNumber() {
 		return serialNumber;
 	}
+	
+	
 }
