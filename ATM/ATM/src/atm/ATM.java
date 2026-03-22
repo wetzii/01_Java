@@ -25,6 +25,17 @@ public class ATM {
 			}
 			return true;
 	}
+	public void depositMoney(BankAccount acc, double amount) throws InvalidDrawAmount {
+        transactionCount++;
+        if (amount <= 0) throw new InvalidDrawAmount("Ungültiger Betrag!");
+        acc.deposit(amount);
+    }
+
+
+    public double checkSaldo(BankAccount acc) {
+        transactionCount++;
+        return acc.getSaldo();
+    }
 	public void changeStatus() {
 		status = !status;
 	}
@@ -37,6 +48,8 @@ public class ATM {
 	public String getSerialNumber() {
 		return serialNumber;
 	}
-	
+	public static int getTransactionCount() {
+		return transactionCount;
+	}
 	
 }
