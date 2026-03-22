@@ -1,4 +1,4 @@
-package atm;
+package atm_wetzlhuetter;
 
 public class ATM {
 	
@@ -18,7 +18,7 @@ public class ATM {
 	public boolean checkPin(BankAccount acc, int pin) {
 		return acc.getPin() == pin;
 	}
-	public boolean drawMoney (BankAccount acc, int sum)  throws InvalidDrawAmount {
+	public boolean drawMoney (BankAccount acc, double sum)  throws InvalidDrawAmount {
 	
 			if( sum > acc.getSaldo()) {
 				throw new InvalidDrawAmount("Du hast nicht genügend Geld auf den Konto");
@@ -51,5 +51,9 @@ public class ATM {
 	public static int getTransactionCount() {
 		return transactionCount;
 	}
-	
+	public void getInfo() {
+		System.out.println("Seriennummer: "+getSerialNumber());
+		System.out.println("Standort: "+ getLocation());
+		System.out.println("Status: "+getStatus());
+	}
 }

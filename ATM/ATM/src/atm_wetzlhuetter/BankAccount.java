@@ -1,4 +1,4 @@
-package atm;
+package atm_wetzlhuetter;
 
 public class BankAccount {
     private static int accountCount = 0;   // zählt alle erstellten Konten
@@ -7,9 +7,8 @@ public class BankAccount {
     private int pin;
     private double saldo;
 
-    public BankAccount(String customerName, int pin, double saldo) {
+    public BankAccount(String customerName, double saldo) {
         this.customerName = customerName;
-        this.pin = pin;
         this.saldo = saldo;
         accountCount++;
     }
@@ -38,5 +37,10 @@ public class BankAccount {
     public void withdraw(double amount) {
         saldo -= amount;
     }
-    
+    public void createPin(int pin) throws InvalidPinTypeException {
+    		if(String.valueOf(pin).length() != 4) {
+    			throw new InvalidPinTypeException("Dein Pin muss 4 stellig sein");
+    		}
+    		this.pin = pin;
+    }
 }
