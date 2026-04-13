@@ -1,5 +1,5 @@
 package hashEqual;
 
-public class RunCode {
+public class Adress {
 
 }
