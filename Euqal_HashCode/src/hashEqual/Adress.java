@@ -1,5 +1,5 @@
 package hashEqual;
-
+import java.util.Objects;
 public class Adress {
 
 	private String street;
@@ -8,10 +8,10 @@ public class Adress {
 	private String city;
 	
 	public Adress(String street, int houseNumber, int postCode, String city) {
-		this.street = street;
+		this.street = Objects.requireNonNull(street, "Street darf nicht Null sein!");
 		this.houseNumber = houseNumber;
 		this.postCode = postCode;
-		this.city = city;
+		this.city =  Objects.requireNonNull(city, "Street darf nicht Null sein!");
 		
 	}
 	public String getStreet() {
@@ -25,5 +25,10 @@ public class Adress {
 	}
 	public String getCity() {
 		return city;
+	}
+	@Override 
+	public boolean equals(Object other) {
+		Adress otherObj = (Adress) other;
+		return otherObj.street.equals(otherObj)
 	}
 }
