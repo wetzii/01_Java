@@ -6,4 +6,30 @@ public class Student {
 	private Name name;
 	private Adress adress;
 	private int id;
+	
+	public Student(Name name, Adress adress) {
+		this.name = name;
+		this.adress = adress;
+		this.id = nextID;
+		nextID ++;
+	}
+	
+	public Name getName() {
+		return name;
+	}
+	public Adress getAdress() {
+		return adress;
+	}
+	public int getID() {
+		return id;
+	}
+	@Override
+	public String toString() {
+
+		return String.format("""
+				Name: %s %s
+				Adress: %s %d, %d %s
+				ID: %d
+				""",getName().getFirstname(), getName().getLastname(),getAdress().getHouseNumber(),getAdress().getHouseNumber(), getAdress().getPostCode(),getAdress().getCity(),getID());
+	}
 }
