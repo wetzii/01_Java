@@ -49,6 +49,12 @@ public class Adress {
 	// WICHTIG: Wenn du equals überschreibst, MUSST du auch hashCode überschreiben!
 	@Override
 	public int hashCode() {
-	    return Objects.hash(street, houseNumber, postCode, city);
+	 int hash = 19;
+	 int multi = 99;
+	 hash = multi + this.street.hashCode();
+	 hash = hash * multi + Integer.hashCode(houseNumber);
+	 hash = hash *  multi + Integer.hashCode(postCode);
+	 hash = hash * multi + city.hashCode();
+	 return hash;
 	}
 }

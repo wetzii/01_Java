@@ -41,4 +41,11 @@ public class Student {
 		Student otherObj = (Student) other;
 		return otherObj.id == this.id;
 	}
+	public int hashCode() {
+		// Formel: hash = hash * multiplier + Fieldwert
+		int hash = 67;
+		int multiplier = 21;
+		hash = hash * multiplier + Integer.hashCode(id);
+		return hash;
+	}
 }

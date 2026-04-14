@@ -38,6 +38,9 @@ public class RunCode {
 	}else {
 		System.out.println("Unterschied zu null: \t "+true);
 	}
+	
+	System.out.println(s1.hashCode());
+	System.out.println(s2.hashCode());
 	//--------------------------------------------
 	//Adresss-----------------------------------------------------
 	//--------------------------------------------
@@ -73,6 +76,8 @@ public class RunCode {
 		}else {
 			System.out.println("Unterschied zu null: \t "+true);
 		}
+		System.out.println(a1.hashCode());
+		System.out.println(a2.hashCode());
 	}
 	
 }
