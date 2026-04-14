@@ -26,9 +26,29 @@ public class Adress {
 	public String getCity() {
 		return city;
 	}
-	@Override 
+	@Override
 	public boolean equals(Object other) {
-		Adress otherObj = (Adress) other;
-		return otherObj.street.equals(otherObj)
+	    // 1. Identitätsprüfung (Performance-Boost)
+	    if (this == other) return true;
+
+	    // 2. Null-Prüfung UND Typ-Prüfung
+	    // 'instanceof' gibt praktischerweise false zurück, wenn 'other' null ist!
+	    if (!(other instanceof Adress)) return false;
+
+	    // 3. Sicherer Cast
+	    Adress otherObj = (Adress) other;
+
+	    // 4. Inhaltsvergleich
+	    // Nutze Objects.equals für Strings, falls diese null sein könnten (auch wenn du im Konstruktor prüfst)
+	    return this.houseNumber == otherObj.houseNumber
+	            && this.postCode == otherObj.postCode
+	            && Objects.equals(this.street, otherObj.street)
+	            && Objects.equals(this.city, otherObj.city);
+	}
+
+	// WICHTIG: Wenn du equals überschreibst, MUSST du auch hashCode überschreiben!
+	@Override
+	public int hashCode() {
+	    return Objects.hash(street, houseNumber, postCode, city);
 	}
 }

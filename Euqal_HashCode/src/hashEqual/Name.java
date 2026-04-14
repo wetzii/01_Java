@@ -5,7 +5,7 @@ public class Name {
 	private String firstname;
 	private String lastname;
 	
-	public Name(String fName, String lName) {
+	public Name(String firstname, String lastname) {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		
@@ -36,5 +36,14 @@ public class Name {
 //		}
 //			return true;
 		return otherObj.firstname.equals(this.getFirstname())  && otherObj.equals(this.getFirstname());
+	}
+	@Override
+	public int hashCode() {
+		// Formel: hash = hash * multiplier + Fieldwert
+		int hash = 67;
+		int multiplier = 21;
+		hash = hash * multiplier + this.firstname.hashCode() ;
+		hash = hash * multiplier + this.lastname.hashCode() ;
+		return hash;
 	}
 }
