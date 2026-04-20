@@ -56,4 +56,18 @@ public class ATM {
 		System.out.println("Standort: "+ getLocation());
 		System.out.println("Status: "+getStatus());
 	}
+	@Override
+	public boolean equals(Object obj) {
+	
+	}q
+	@Override
+	public int hashCode() {
+		int hash = 29;
+		int multi  = 32;
+		
+		 hash = hash * multi +this.serialNumber.hashCode();
+		 hash = hash *  multi 
+		 hash = hash *  multi + Boolean.hashCode(status);
+		 hash = hash * multi + city.hashCode();
+	}
 }
