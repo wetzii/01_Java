@@ -6,7 +6,9 @@ import java.util.Scanner;
 
 public class UI {
 	
-	static ATM[] atms = new ATM[10];
+	static ATM[] atmDigitalMedia  (abstract class)
+	├-- Film      (extends DigitalMedia, implements SearchInterface)
+	|--Game      (extends DigitalMedia)s = new ATM[10];
 	static Saboteur sab = new Saboteur();
 	static Scanner scan = new Scanner(System.in);
 	static BankAccount konto;
