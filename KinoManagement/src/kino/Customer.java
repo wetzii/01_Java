@@ -5,24 +5,30 @@ import java.util.Objects;
 public class Customer extends Person {
 
 	private int costumerNr;
-	private Ticket ticket; 
-	public Customer(String name, int age, int costumerNr, Ticket ticket ) {
-		super(name,age);
+	private Ticket ticket;
+
+	public Customer(String name, int age, int costumerNr, Ticket ticket) {
+		super(name, age);
 		this.costumerNr = costumerNr;
 		this.ticket = ticket;
 	}
-	
+
+	public int getCustomerNr() {
+		return costumerNr;
+	}
 	public Ticket getTicket() {
 		return ticket;
 	}
+	public void setTicket(Ticket ticket) {
+		this.ticket = ticket;
+	}
 	public boolean hasTicket(Hall hall) {
-		
-	return ticket.getValid() == true && ticket.getHall().equals(hall) ;	                                                      
+		if (ticket == null) return false;
+		return ticket.getValid() && ticket.getHall().equals(hall);
 	}
 	@Override
 	public String toString() {
-		
-		return super.toString() +String.format ("Kundennummer: %d\n", costumerNr);
+		return super.toString() + String.format("Kundennummer: %d\n", costumerNr);
 	}
 	@Override
 	public int hashCode() {
@@ -30,14 +36,10 @@ public class Customer extends Person {
 	}
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Costumer other = (Costumer) obj;
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		Customer other = (Customer) obj;
 		return costumerNr == other.costumerNr && Objects.equals(ticket, other.ticket);
-		
 	}
 }

@@ -1,15 +1,24 @@
 package kino;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
 
 public class Hall {
-	
+
 	private int HallNr;
 	private String name;
 	private int capacity;
 	private ArrayList<Film> films = new ArrayList<Film>();
-	private ArrayList<Costumer> costumers = new ArrayList<Costumer>();
+	private ArrayList<Customer> costumers = new ArrayList<Customer>();
+
+	public Hall(int hallNr, String name, int capacity, Cinema cinema) {
+		this.HallNr = hallNr;
+		this.name = name;
+		this.capacity = capacity;
+		cinema.getAvailableHalls().add(this);
+	}
+
 	public int getHallNr() {
 		return HallNr;
 	}
@@ -25,35 +34,36 @@ public class Hall {
 	public ArrayList<Film> getFilms() {
 		return films;
 	}
-	public ArrayList<Costumer> getCostumers() {
+	public ArrayList<Customer> getCostumers() {
 		return costumers;
 	}
-	public void addCostumer(Costumer c) {
-		if(c.hasTicket(this) && this.capacity >= costumers.size())
-		costumers.add(c);
+	public void addCustomer(Customer c) {
+		if (c.hasTicket(this) && costumers.size() < capacity)
+			costumers.add(c);
 	}
 	public void addFilm(Film f) {
 		films.add(f);
 	}
 	public void removeFilm(String title) {
 		Iterator<Film> it = films.iterator();
-		int count = 0;
-		while(it.hasNext()) {
+		while (it.hasNext()) {
 			Film element = it.next();
-			
-			if(element.getTitle().equals(title));
-			it.remove();
+			if (element.getTitle().equals(title))
+				it.remove();
 		}
 	}
 	public void showFilms() {
-		for(Film f: films) {
+		for (Film f : films) {
 			System.out.println(f);
 		}
 	}
-	public void clearHall()
-	{
-		for(Costumer c: costumers) {
-			costumers.getT
+	public void sortFilms() {
+		films.sort(Comparator.comparingInt(Film::getFsk));
+	}
+	public void clearHall() {
+		for (Customer c : costumers) {
+			c.getTicket().setTicket(false);
 		}
+		costumers.clear();
 	}
 }

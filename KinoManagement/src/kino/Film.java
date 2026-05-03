@@ -7,11 +7,12 @@ public class Film implements Comparable<Film>{
 	private int year;
 	private int minutes;
 	
-	public Film(String title, int fsk, int year, int minutes) {
+	public Film(String title, int fsk, int year, int minutes, Cinema cinema) {
 		this.title = title;
 		this.fsk = fsk;
 		this.year = year;
-		this.minutes = minutes;			
+		this.minutes = minutes;
+		cinema.addFilm(this);
 	}
 	public String getTitle() {
 		return title;
@@ -27,11 +28,10 @@ public class Film implements Comparable<Film>{
 	}
 	@Override
 	public int compareTo(Film o) {
-		return this.title.compareTo(o.title); //Standartsotierung nach Titel
-		 
+		return this.title.compareTo(o.title);
 	}
 	@Override
 	public String toString() {
-		return String.format("Titel: %s\nFsk: %d\n Jahr: %d\nLänge: %d",title,fsk, year, minutes);
+		return String.format("Titel: %s\nFsk: %d\nJahr: %d\nLänge: %d", title, fsk, year, minutes);
 	}
 }

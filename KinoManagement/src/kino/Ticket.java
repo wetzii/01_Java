@@ -10,7 +10,7 @@ public class Ticket {
 		this.hall = hall;
 		this.film = film;
 		this.seatNr = seatNr;
-		this.valid = false;
+		this.valid = valid;
 	}
 	public Hall getHall() {
 		return hall;
@@ -29,6 +29,6 @@ public class Ticket {
 	}
 	@Override
 	public String toString() {
-		return String.format("Hallennummer %d\nFilmnamme: %s\n Sitznummer: %d\nValides Ticket: %b\n", hall.getHallNr(), film.getTitle(), seatNr, valid);
+		return String.format("Hallennummer %d\nFilmname: %s\nSitznummer: %d\nValides Ticket: %b\n", hall.getHallNr(), film.getTitle(), seatNr, valid);
 	}
 }
